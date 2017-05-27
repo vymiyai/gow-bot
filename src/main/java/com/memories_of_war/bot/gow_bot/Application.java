@@ -14,17 +14,19 @@ import sx.blah.discord.api.IDiscordClient;
 @SpringBootApplication
 @RestController
 public class Application {
-	public static String token = "";
 
 	@RequestMapping("/")
 	public String home() {
 		return "AMERICA FUCK YEAH";
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+	{
+		// get token as environment variable.
+		final String token = System.getenv("gow_token");
+		
 		SpringApplication.run(Application.class, args);
 
-		/*
 		IDiscordClient cli = new ClientBuilder().withToken(token).withRecommendedShardCount().build();
 
 		// Register a listener via the EventSubscriber annotation which allows
@@ -34,14 +36,13 @@ public class Application {
 		// Only login after all events are registered otherwise some may be
 		// missed.
 		cli.login();
-		*/
 	}
 	
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
         return args -> 
         {
-            System.out.println(ctx.getEnvironment().getProperty("gow_token"));
+            //System.out.println();
         };
     }
 
