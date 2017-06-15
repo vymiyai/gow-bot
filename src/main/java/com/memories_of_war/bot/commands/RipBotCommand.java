@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IUser;
 
-@Component
 public class RipBotCommand implements IBotCommand {
 
 	@Override

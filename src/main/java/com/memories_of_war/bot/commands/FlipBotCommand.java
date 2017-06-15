@@ -12,7 +12,6 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
  * @author vymiyai
  *
  */
-@Component
 public class FlipBotCommand implements IBotCommand {
 
 	@Override

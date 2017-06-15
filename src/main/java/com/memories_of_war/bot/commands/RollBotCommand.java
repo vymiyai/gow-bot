@@ -14,7 +14,6 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
  * @author vymiyai
  *
  */
-@Component
 public class RollBotCommand implements IBotCommand {
 
 	public final Integer X_LOWER_BOUND_INCLUSIVE = 1;

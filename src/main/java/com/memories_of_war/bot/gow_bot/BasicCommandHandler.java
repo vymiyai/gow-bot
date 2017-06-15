@@ -20,15 +20,14 @@ public class BasicCommandHandler {
 
 	private HashMap<String, IBotCommand> basicCommands;
 
-	@Autowired
 	public BasicCommandHandler() {
 		// instantiate the basic commands.
 		this.basicCommands = new HashMap<String, IBotCommand>();
 
-		//this.basicCommands.put("!roll", new RollBotCommand());
-		//this.basicCommands.put("!flip", new FlipBotCommand());
-		//this.basicCommands.put("!rip", new RipBotCommand());
-		//this.basicCommands.put("!vv", new VVBotCommand());
+		this.basicCommands.put("!roll", new RollBotCommand());
+		this.basicCommands.put("!flip", new FlipBotCommand());
+		this.basicCommands.put("!rip", new RipBotCommand());
+		this.basicCommands.put("!vv", new VVBotCommand());
 	}
 
 	/**
