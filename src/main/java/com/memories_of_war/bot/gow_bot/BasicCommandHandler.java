@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 import com.memories_of_war.bot.commands.FlipBotCommand;
 import com.memories_of_war.bot.commands.IBotCommand;
+import com.memories_of_war.bot.commands.RipBotCommand;
 import com.memories_of_war.bot.commands.RollBotCommand;
+import com.memories_of_war.bot.commands.VVBotCommand;
 
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
@@ -22,6 +24,8 @@ public class BasicCommandHandler {
 
 		this.basicCommands.put("!roll", new RollBotCommand());
 		this.basicCommands.put("!flip", new FlipBotCommand());
+		this.basicCommands.put("!rip", new RipBotCommand());
+		this.basicCommands.put("!vv", new VVBotCommand());
 	}
 
 	/**
@@ -67,8 +71,8 @@ public class BasicCommandHandler {
 
 		if (this.basicCommands.containsKey(commandToken)) {
 			IBotCommand command = this.basicCommands.get(commandToken);
-			String response = command.execute(tokenizedMessage);
-			this.sendMessage(event.getChannel(), event.getAuthor().mention() + " " + response);
+			String response = command.execute(tokenizedMessage, event);
+			this.sendMessage(event.getChannel(), response);
 		}
 
 		// do nothing if there is no command match.

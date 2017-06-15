@@ -14,13 +14,13 @@ public class RollBotCommandTest {
 
 		String errorMessage = rbc.getErrorMessage();
 
-		assertNotEquals(errorMessage, rbc.execute(new String[] { "!roll", "1d6" }));
-		assertNotEquals(errorMessage, rbc.execute(new String[] { "!roll", "10d9999" }));
+		assertNotEquals(errorMessage, rbc.execute(new String[] { "!roll", "1d6" }, null));
+		assertNotEquals(errorMessage, rbc.execute(new String[] { "!roll", "10d9999" }, null));
 
-		assertEquals(errorMessage, rbc.execute(new String[] { "!roll", "0d6" }));
-		assertEquals(errorMessage, rbc.execute(new String[] { "!roll", "5d10000" }));
+		assertEquals(errorMessage, rbc.execute(new String[] { "!roll", "0d6" }, null));
+		assertEquals(errorMessage, rbc.execute(new String[] { "!roll", "5d10000" }, null));
 
-		assertEquals(errorMessage, rbc.execute(new String[] { "!roll", "asdfasdfsd" }));
+		assertEquals(errorMessage, rbc.execute(new String[] { "!roll", "asdfasdfsd" }, null));
 	}
 
 }

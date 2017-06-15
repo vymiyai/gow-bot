@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+
 /**
  * Given a String in the format "xdy", rolls a y-sided die x times.
  * 
@@ -36,7 +38,10 @@ public class RollBotCommand implements IBotCommand {
 	}
 
 	@Override
-	public String execute(String[] tokenizedMessage) {
+	public String execute(String[] tokenizedMessage, MessageReceivedEvent event) {
+
+		String response;
+
 		try {
 			// retrieve values of x and y.
 			Pattern p = Pattern.compile(pattern);
@@ -63,11 +68,17 @@ public class RollBotCommand implements IBotCommand {
 			}
 
 			// return result as a list of numbers separated by a whitespace.
-			return String.join(" ", numbers);
+			response = String.join(" ", numbers);
 
 		} catch (Exception e) {
-			return this.getErrorMessage();
-		}
-	}
+			response = this.getErrorMessage();
 
+		}
+		
+		// return the response without mentions if the event is null.
+		if (event == null)
+			return response;
+		else
+			return event.getAuthor().mention() + " " + response;
+	}
 }
