@@ -2,6 +2,10 @@ package com.memories_of_war.bot.gow_bot;
 
 import java.util.HashMap;
 
+import com.memories_of_war.bot.commands.FlipBotCommand;
+import com.memories_of_war.bot.commands.IBotCommand;
+import com.memories_of_war.bot.commands.RollBotCommand;
+
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.obj.IChannel;
@@ -10,15 +14,37 @@ import sx.blah.discord.util.RequestBuffer;
 
 public class BasicCommandHandler {
 
-	public String[] tokenize(String messageString) {
-		
-		return messageString.split( " " );
+	private HashMap<String, IBotCommand> basicCommands;
+
+	public BasicCommandHandler() {
+		// instantiate the basic commands.
+		this.basicCommands = new HashMap<String, IBotCommand>();
+
+		this.basicCommands.put("!roll", new RollBotCommand());
+		this.basicCommands.put("!flip", new FlipBotCommand());
 	}
 
-	// Helper functions to make certain aspects of the bot easier to use.
-	private void sendMessage(IChannel channel, String message) {
+	/**
+	 * Splits a string by space character.
+	 * 
+	 * @param messageString
+	 *            - the command as a String
+	 * @return an array of String tokens.
+	 */
+	public String[] tokenize(String messageString) {
 
-		// This might look weird but it'll be explained in another page.
+		return messageString.split(" ");
+	}
+
+	/**
+	 * Helper function to make certain aspects of the bot easier to use.
+	 * 
+	 * @param channel
+	 *            - target Discord IChannel where the response will be posted.
+	 * @param message
+	 *            - the String containing a response.
+	 */
+	private void sendMessage(IChannel channel, String message) {
 		RequestBuffer.request(() -> {
 			try {
 				channel.sendMessage(message);
@@ -32,30 +58,20 @@ public class BasicCommandHandler {
 	@EventSubscriber
 	public void onMessageReceived(MessageReceivedEvent event) {
 		/*
-		 * Type !kenjii to summon Kenjii. Type !vv for awesomeness. Type
-		 * !rip @someone for additional VietnamVetness. Type !flip to toss a
-		 * coin. Type !roll xdy with x and y being positive integer numbers to
-		 * roll x dices of y faces (e.g. !roll 1d6). Type !help to show this
-		 * tooltip.
+		 * Kenjii vv rip - flip - roll help
 		 */
 
-		// get command dictionary.
-		// HashMap<String, >
-
-		// match command with dictionary key
-		// if exists, do stuff
-		// else, do nothing.
-		// for each command in command
-		
 		String messageString = event.getMessage().getContent();
-		String[] tokenizedMessageString = this.tokenize(messageString);
-/*
-		if(tokenizedMessageString.length > 0){
-		
-			// send a message back.
+		String[] tokenizedMessage = this.tokenize(messageString);
+		String commandToken = tokenizedMessage[0].toLowerCase();
+
+		if (this.basicCommands.containsKey(commandToken)) {
+			IBotCommand command = this.basicCommands.get(commandToken);
+			String response = command.execute(tokenizedMessage);
+			this.sendMessage(event.getChannel(), response);
 		}
-	*/	
-		// not entirely sure whether an empty string can be sent 
+
+		// do nothing if there is no command match.
 	}
 
 }
