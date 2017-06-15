@@ -68,7 +68,7 @@ public class BasicCommandHandler {
 		if (this.basicCommands.containsKey(commandToken)) {
 			IBotCommand command = this.basicCommands.get(commandToken);
 			String response = command.execute(tokenizedMessage);
-			this.sendMessage(event.getChannel(), response);
+			this.sendMessage(event.getChannel(), event.getAuthor().mention() + " " + response);
 		}
 
 		// do nothing if there is no command match.

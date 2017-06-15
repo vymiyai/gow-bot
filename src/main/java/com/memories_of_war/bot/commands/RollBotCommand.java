@@ -30,10 +30,10 @@ public class RollBotCommand implements IBotCommand {
 			int y = Integer.parseInt(m.group(2));
 
 			// throw error if values are not in the expected bounds.
-			if (x < this.X_LOWER_BOUND_INCLUSIVE && x > this.X_UPPER_BOUND_INCLUSIVE)
+			if (x < this.X_LOWER_BOUND_INCLUSIVE || x > this.X_UPPER_BOUND_INCLUSIVE)
 				throw new Exception();
 
-			if (y < this.Y_LOWER_BOUND_INCLUSIVE && y > this.Y_UPPER_BOUND_INCLUSIVE)
+			if (y < this.Y_LOWER_BOUND_INCLUSIVE || y > this.Y_UPPER_BOUND_INCLUSIVE)
 				throw new Exception();
 
 			// generate x random numbers from 1 to y.
