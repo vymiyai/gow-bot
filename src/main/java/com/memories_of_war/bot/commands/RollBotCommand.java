@@ -19,6 +19,22 @@ public class RollBotCommand implements IBotCommand {
 
 	private String pattern = "(\\d+)[dD](\\d+)";
 
+	public String getErrorMessage() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("The command must be in the form \"!roll xdy\", where ");
+		sb.append(this.X_LOWER_BOUND_INCLUSIVE);
+		sb.append(" <= x <= ");
+		sb.append(this.X_UPPER_BOUND_INCLUSIVE);
+		sb.append(" and ");
+		sb.append(this.Y_LOWER_BOUND_INCLUSIVE);
+		sb.append(" <= y <= ");
+		sb.append(this.Y_UPPER_BOUND_INCLUSIVE);
+		sb.append(" (e.g. \"!roll 1d6\").");
+
+		return sb.toString();
+
+	}
+
 	@Override
 	public String execute(String[] tokenizedMessage) {
 		try {
@@ -26,7 +42,7 @@ public class RollBotCommand implements IBotCommand {
 			Pattern p = Pattern.compile(pattern);
 			Matcher m = p.matcher(tokenizedMessage[1]);
 			m.matches();
-			
+
 			int x = Integer.parseInt(m.group(1));
 			int y = Integer.parseInt(m.group(2));
 
@@ -50,18 +66,7 @@ public class RollBotCommand implements IBotCommand {
 			return String.join(" ", numbers);
 
 		} catch (Exception e) {
-			StringBuilder sb = new StringBuilder();
-			sb.append("The command must be in the form \"!roll xdy\", where ");
-			sb.append(this.X_LOWER_BOUND_INCLUSIVE);
-			sb.append(" <= x <= ");
-			sb.append(this.X_UPPER_BOUND_INCLUSIVE);
-			sb.append(" and ");
-			sb.append(this.Y_LOWER_BOUND_INCLUSIVE);
-			sb.append(" <= y <= ");
-			sb.append(this.Y_UPPER_BOUND_INCLUSIVE);
-			sb.append(".");
-
-			return sb.toString();
+			return this.getErrorMessage();
 		}
 	}
 
