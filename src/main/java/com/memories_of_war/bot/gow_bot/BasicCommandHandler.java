@@ -2,8 +2,6 @@ package com.memories_of_war.bot.gow_bot;
 
 import java.util.HashMap;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.memories_of_war.bot.commands.FlipBotCommand;
 import com.memories_of_war.bot.commands.IBotCommand;
 import com.memories_of_war.bot.commands.RipBotCommand;
