@@ -2,6 +2,8 @@ package com.memories_of_war.bot.commands;
 
 import java.util.Random;
 
+import org.springframework.stereotype.Component;
+
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
 /**
@@ -10,6 +12,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
  * @author vymiyai
  *
  */
+@Component
 public class FlipBotCommand implements IBotCommand {
 
 	@Override

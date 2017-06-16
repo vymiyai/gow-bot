@@ -2,11 +2,10 @@ package com.memories_of_war.bot.gow_bot;
 
 import java.util.HashMap;
 
-import com.memories_of_war.bot.commands.FlipBotCommand;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.memories_of_war.bot.commands.IBotCommand;
-import com.memories_of_war.bot.commands.RipBotCommand;
-import com.memories_of_war.bot.commands.RollBotCommand;
-import com.memories_of_war.bot.commands.VVBotCommand;
 
 import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
@@ -14,18 +13,22 @@ import sx.blah.discord.handle.obj.IChannel;
 import sx.blah.discord.util.DiscordException;
 import sx.blah.discord.util.RequestBuffer;
 
+@Component
 public class BasicCommandHandler {
 
+	@Autowired
 	private HashMap<String, IBotCommand> basicCommands;
 
 	public BasicCommandHandler() {
 		// instantiate the basic commands.
 		this.basicCommands = new HashMap<String, IBotCommand>();
 
-		this.basicCommands.put("!roll", new RollBotCommand());
-		this.basicCommands.put("!flip", new FlipBotCommand());
-		this.basicCommands.put("!rip", new RipBotCommand());
-		this.basicCommands.put("!vv", new VVBotCommand());
+		/*
+		 * this.basicCommands.put("!roll", new RollBotCommand());
+		 * this.basicCommands.put("!flip", new FlipBotCommand());
+		 * this.basicCommands.put("!rip", new RipBotCommand());
+		 * this.basicCommands.put("!vv", new VVBotCommand());
+		 */
 	}
 
 	/**

@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.stereotype.Component;
+
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
 /**
@@ -12,6 +14,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
  * @author vymiyai
  *
  */
+@Component
 public class RollBotCommand implements IBotCommand {
 
 	public final Integer X_LOWER_BOUND_INCLUSIVE = 1;

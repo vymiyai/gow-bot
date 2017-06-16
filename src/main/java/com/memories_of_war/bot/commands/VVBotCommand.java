@@ -2,8 +2,11 @@ package com.memories_of_war.bot.commands;
 
 import java.util.Random;
 
+import org.springframework.stereotype.Component;
+
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
+@Component
 public class VVBotCommand implements IBotCommand {
 
 	@Override
