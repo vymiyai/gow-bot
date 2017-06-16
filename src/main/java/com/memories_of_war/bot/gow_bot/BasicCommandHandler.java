@@ -22,20 +22,13 @@ public class BasicCommandHandler {
 
 	private HashMap<String, IBotCommand> basicCommands;
 
-	public BasicCommandHandler() {
+	public void setBasicCommands(List<IBotCommand> injectedBasicCommands) {
 		// instantiate the basic commands.
 		this.basicCommands = new HashMap<String, IBotCommand>();
 
 		// compile hashmap from command list.
 		for (IBotCommand command : this.injectedBasicCommands)
 			this.basicCommands.put(command.getCommandName(), command);
-
-		/*
-		 * this.basicCommands.put("!roll", new RollBotCommand());
-		 * this.basicCommands.put("!flip", new FlipBotCommand());
-		 * this.basicCommands.put("!rip", new RipBotCommand());
-		 * this.basicCommands.put("!vv", new VVBotCommand());
-		 */
 	}
 
 	/**
