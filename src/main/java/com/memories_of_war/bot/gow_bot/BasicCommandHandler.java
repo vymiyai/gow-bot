@@ -17,17 +17,15 @@ import sx.blah.discord.util.RequestBuffer;
 @Component
 public class BasicCommandHandler {
 
-	@Autowired
-	private List<IBotCommand> injectedBasicCommands;
-
 	private HashMap<String, IBotCommand> basicCommands;
 
+	@Autowired
 	public void setBasicCommands(List<IBotCommand> injectedBasicCommands) {
 		// instantiate the basic commands.
 		this.basicCommands = new HashMap<String, IBotCommand>();
 
 		// compile hashmap from command list.
-		for (IBotCommand command : this.injectedBasicCommands)
+		for (IBotCommand command : injectedBasicCommands)
 			this.basicCommands.put(command.getCommandName(), command);
 	}
 
