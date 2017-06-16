@@ -4,9 +4,11 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 
 /**
  * 
- * @author vymiyai
- * Interface for simple bot commands.
+ * @author vymiyai Interface for simple bot commands.
  */
-public interface IBotCommand{	
+public interface IBotCommand {
+
 	public String execute(String[] tokenizedMessage, MessageReceivedEvent event);
+
+	public String getCommandName();
 }

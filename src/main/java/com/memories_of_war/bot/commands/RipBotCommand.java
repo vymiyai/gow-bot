@@ -19,5 +19,11 @@ public class RipBotCommand implements IBotCommand {
 
 		return mention + "Serves you right! lol";
 	}
+	
+	
+	@Override
+	public String getCommandName() {
+		return "!rip";
+	}
 
 }

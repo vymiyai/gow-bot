@@ -34,5 +34,11 @@ public class FlipBotCommand implements IBotCommand {
 		else
 			return mention + "TAILS";
 	}
+	
+	
+	@Override
+	public String getCommandName() {
+		return "!flip";
+	}
 
 }

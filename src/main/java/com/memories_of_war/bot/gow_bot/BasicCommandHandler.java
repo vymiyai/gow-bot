@@ -1,6 +1,7 @@
 package com.memories_of_war.bot.gow_bot;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,11 +18,17 @@ import sx.blah.discord.util.RequestBuffer;
 public class BasicCommandHandler {
 
 	@Autowired
+	private List<IBotCommand> injectedBasicCommands;
+
 	private HashMap<String, IBotCommand> basicCommands;
 
 	public BasicCommandHandler() {
 		// instantiate the basic commands.
 		this.basicCommands = new HashMap<String, IBotCommand>();
+
+		// compile hashmap from command list.
+		for (IBotCommand command : this.injectedBasicCommands)
+			this.basicCommands.put(command.getCommandName(), command);
 
 		/*
 		 * this.basicCommands.put("!roll", new RollBotCommand());

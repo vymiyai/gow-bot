@@ -64,5 +64,10 @@ public class VVBotCommand implements IBotCommand {
 		int index = random.nextInt(quotes.length);
 		return quotes[index];
 	}
+	
+	@Override
+	public String getCommandName() {
+		return "!vv";
+	}
 
 }

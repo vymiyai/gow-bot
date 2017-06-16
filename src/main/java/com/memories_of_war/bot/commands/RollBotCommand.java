@@ -84,4 +84,10 @@ public class RollBotCommand implements IBotCommand {
 		else
 			return event.getAuthor().mention() + " " + response;
 	}
+	
+	
+	@Override
+	public String getCommandName() {
+		return "!roll";
+	}
 }
