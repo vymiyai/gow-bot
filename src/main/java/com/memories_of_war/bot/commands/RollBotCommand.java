@@ -85,9 +85,13 @@ public class RollBotCommand implements IBotCommand {
 			return event.getAuthor().mention() + " " + response;
 	}
 	
-	
 	@Override
 	public String getCommandName() {
 		return "!roll";
+	}
+	
+	@Override
+	public String getCommandDescription() {
+		return "Type !roll xdy with x and y being positive integer numbers to roll x dices of y faces (e.g. !roll 1d6).";
 	}
 }

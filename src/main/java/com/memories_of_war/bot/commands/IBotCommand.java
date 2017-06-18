@@ -11,4 +11,6 @@ public interface IBotCommand {
 	public String execute(String[] tokenizedMessage, MessageReceivedEvent event);
 
 	public String getCommandName();
+	
+	public String getCommandDescription();
 }

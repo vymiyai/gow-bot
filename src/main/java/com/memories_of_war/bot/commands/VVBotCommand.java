@@ -69,5 +69,10 @@ public class VVBotCommand implements IBotCommand {
 	public String getCommandName() {
 		return "!vv";
 	}
+	
+	@Override
+	public String getCommandDescription() {
+		return "Type !vv for awesomeness.";
+	}
 
 }

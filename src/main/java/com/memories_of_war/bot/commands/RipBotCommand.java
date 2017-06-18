@@ -25,5 +25,10 @@ public class RipBotCommand implements IBotCommand {
 	public String getCommandName() {
 		return "!rip";
 	}
+	
+	@Override
+	public String getCommandDescription() {
+		return "Type !rip @someone for additional VietnamVetness.";
+	}
 
 }

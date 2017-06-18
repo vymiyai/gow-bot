@@ -41,4 +41,9 @@ public class FlipBotCommand implements IBotCommand {
 		return "!flip";
 	}
 
+	@Override
+	public String getCommandDescription() {
+		return "Type !flip to toss a coin. The result are HEADS or TAILS.";
+	}
+	
 }
