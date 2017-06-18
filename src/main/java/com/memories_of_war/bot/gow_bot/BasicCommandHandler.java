@@ -1,5 +1,6 @@
 package com.memories_of_war.bot.gow_bot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,8 +18,17 @@ import sx.blah.discord.util.RequestBuffer;
 @Component
 public class BasicCommandHandler {
 
+	/**
+	 * Dictionary that stores each command with its calling prefix.
+	 */
 	private HashMap<String, IBotCommand> basicCommands;
 
+	/**
+	 * Initializes the BasicCommandHandler with commands.
+	 * 
+	 * @param injectedBasicCommands
+	 *            - injected list of IBotCommand instances.
+	 */
 	@Autowired
 	public void setBasicCommands(List<IBotCommand> injectedBasicCommands) {
 		// instantiate the basic commands.
@@ -27,6 +37,15 @@ public class BasicCommandHandler {
 		// compile hashmap from command list.
 		for (IBotCommand command : injectedBasicCommands)
 			this.basicCommands.put(command.getCommandName(), command);
+	}
+
+	/**
+	 * @return a list of Strings containing the prefixes of each command.
+	 */
+	public List<String> getCommandPrefixes() {
+		List<String> prefixes = new ArrayList<String>();
+		prefixes.addAll(basicCommands.keySet());
+		return prefixes;
 	}
 
 	/**
@@ -60,11 +79,14 @@ public class BasicCommandHandler {
 		});
 	}
 
+	/**
+	 * Method called when a message is received by the bot. The logic of each
+	 * command is defined through a Command design pattern.
+	 * 
+	 * @param event
+	 */
 	@EventSubscriber
 	public void onMessageReceived(MessageReceivedEvent event) {
-		/*
-		 * Kenjii vv rip - flip - roll help
-		 */
 
 		String messageString = event.getMessage().getContent();
 		String[] tokenizedMessage = this.tokenize(messageString);
