@@ -50,7 +50,9 @@ public class HelpBotCommand implements IBotCommand {
 			response.append("\n");
 		}
 
-		response.append("```");
+		// it seems that a component cannot inject itself.
+		response.append(this.getCommandDescription());
+		response.append("\n```");
 
 		return response.toString();
 	}

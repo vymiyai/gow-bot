@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import com.memories_of_war.bot.gow_bot.BasicCommandHandler;
+import com.memories_of_war.bot.BasicCommandHandler;
 
 public class BasicCommandHandlerTest {
 	

@@ -1,4 +1,4 @@
-package com.memories_of_war.bot.gow_bot;
+package com.memories_of_war.bot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
