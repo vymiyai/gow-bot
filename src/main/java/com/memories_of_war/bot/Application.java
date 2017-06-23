@@ -22,7 +22,7 @@ public class Application {
 	// Logger.
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
 
-	// as of 23.06.2017, moving the autowired annotation from the setter to this property fucks up Discord4J.
+	// as of 23.06.2017, moving the autowired annotation from the setter to this property fucks up everything.
 	private static BasicCommandHandler basicCommandHandler;
 
 	@Autowired
@@ -37,7 +37,7 @@ public class Application {
 	 */
 	public static void main(String[] args) {
 		// get token as environment variable.
-		final String token = "GOW_TOKEN";
+		final String token = System.getenv("GOW_TOKEN");
 
 		SpringApplication.run(Application.class, args);
 
