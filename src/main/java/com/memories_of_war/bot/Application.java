@@ -2,6 +2,7 @@ package com.memories_of_war.bot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,6 +21,9 @@ public class Application {
 
 	// Logger.
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
+	
+	@Autowired
+	private static BasicCommandHandler basicCommandHandler;
 
 	/**
 	 * Main method run statically.
@@ -37,7 +41,7 @@ public class Application {
 
 			// Register a listener via the EventSubscriber annotation which
 			// allows for organization and delegation of events
-			cli.getDispatcher().registerListener(new BasicCommandHandler());
+			cli.getDispatcher().registerListener(basicCommandHandler);
 
 			// Only login after all events are registered otherwise some may be
 			// missed.
