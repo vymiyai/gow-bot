@@ -1,4 +1,4 @@
-package com.memories_of_war.bot.database;
+package com.memories_of_war.bot;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.memories_of_war.bot.Application;
-import com.memories_of_war.bot.BasicCommandHandler;
+import com.memories_of_war.bot.database.DiscordResources;
+import com.memories_of_war.bot.database.DiscordResourcesRepository;
+import com.memories_of_war.bot.database.DiscordUser;
+import com.memories_of_war.bot.database.DiscordUserRepository;
 
 @RestController
-public class HomeController {
+public class BotRESTfulController {
 	// Logger.
 	private static final Logger log = LoggerFactory.getLogger(Application.class);
 	
@@ -18,7 +20,7 @@ public class HomeController {
 	 * Command handler instance.
 	 */
 	@Autowired
-	private BasicCommandHandler basicCommandHandler;
+	private CommandHandler basicCommandHandler;
 
 	@Autowired
 	private DiscordUserRepository dur;

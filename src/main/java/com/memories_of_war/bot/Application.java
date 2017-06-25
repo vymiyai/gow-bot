@@ -26,10 +26,10 @@ public class Application {
 
 	// as of 23.06.2017, moving the autowired annotation from the setter to this
 	// property fucks up everything.
-	private static BasicCommandHandler basicCommandHandler;
+	private static CommandHandler basicCommandHandler;
 
 	@Autowired
-	private void setBasicCommandHandler(BasicCommandHandler bch) {
+	private void setBasicCommandHandler(CommandHandler bch) {
 		basicCommandHandler = bch;
 	}
 

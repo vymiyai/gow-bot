@@ -16,7 +16,7 @@ import sx.blah.discord.util.DiscordException;
 import sx.blah.discord.util.RequestBuffer;
 
 @Component
-public class BasicCommandHandler {
+public class CommandHandler {
 
 	/**
 	 * Dictionary that stores each command with its calling prefix.
