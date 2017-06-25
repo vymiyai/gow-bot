@@ -70,7 +70,7 @@ public class JoinBotCommand implements IBotCommand {
 	 * @return true or an exception otherwise.
 	 * @throws UserAlreadyExistsException
 	 */
-	protected boolean isFirstCharacter(Long discordId) throws UserAlreadyExistsException {
+	private boolean isFirstCharacter(Long discordId) throws UserAlreadyExistsException {
 		List<DiscordUser> results = this.discordUserRepository.findByDiscordId(discordId);
 		if (results.size() == 0)
 			return true;

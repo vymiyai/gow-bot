@@ -1,6 +1,7 @@
 package com.memories_of_war.bot.commands;
 
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
@@ -8,6 +9,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 public class RaffleBotCommand implements IBotCommand {
 
 	@Override
+	@Transactional
 	public String execute(String[] tokenizedMessage, MessageReceivedEvent event) {
 		// TODO Auto-generated method stub
 		return null;
