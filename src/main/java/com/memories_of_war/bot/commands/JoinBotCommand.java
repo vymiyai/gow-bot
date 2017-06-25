@@ -111,7 +111,6 @@ public class JoinBotCommand implements IBotCommand {
 
 			// create the new user.
 			DiscordUser newUser = new DiscordUser(discordId, username);
-			//this.discordUserRepository.save(newUser);
 
 			// create the resources. Saving is not required because of DiscordUser's cascade.
 			DiscordResources discordResources = new DiscordResources();

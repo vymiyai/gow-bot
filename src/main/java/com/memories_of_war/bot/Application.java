@@ -10,9 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import com.memories_of_war.bot.database.DiscordResources;
 import com.memories_of_war.bot.database.DiscordResourcesRepository;
-import com.memories_of_war.bot.database.DiscordUser;
 import com.memories_of_war.bot.database.DiscordUserRepository;
 
 import sx.blah.discord.api.ClientBuilder;
