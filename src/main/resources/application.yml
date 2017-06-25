@@ -1,3 +1,5 @@
+discord:
+  gow_token: ${GOW_TOKEN}
 spring:
   datasource:
     url: jdbc:postgresql://${POSTGRESQL_DB_HOST}:5432/mow
@@ -7,7 +9,8 @@ spring:
 spring.jpa:
   database: postgresql
   database-platform: org.hibernate.dialect.PostgreSQLDialect
-  hibernate.ddl-auto: create-drop
+### Auto creates and auto drops a table. Good for development but suicidal in production.
+#  hibernate.ddl-auto: create-drop
   properties:
     hibernate:
       temp.use_jdbc_metadata_defaults: false

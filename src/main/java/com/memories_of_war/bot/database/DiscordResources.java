@@ -53,8 +53,8 @@ public class DiscordResources {
 	@Override
 	public String toString() {
 		return String.format(
-				"Discord user resources [id='%d', cooldown='%s', gems='%d', gold='%d', spentGems='%d', spentGold='%d', v2Launched='%d']",
-				this.id, this.cooldown, this.gems, this.gold, this.spentGems, this.spentGold, this.v2Launched);
+				"Discord user resources [id='%d', cooldown='%s', gems='%d', gold='%d', spentGems='%d', spentGold='%d', v2Launched='%d', DiscordUser.username='%s']",
+				this.id, this.cooldown, this.gems, this.gold, this.spentGems, this.spentGold, this.v2Launched, discordUser.getDiscordUsername());
 	}
 
 	public Long getId() {

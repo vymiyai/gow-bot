@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,8 +40,8 @@ public class DiscordUser {
 	@UpdateTimestamp
 	private Timestamp lastChange;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "discord_resources_id")
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JoinColumn(name = "discord_resources_fk")
 	private DiscordResources discordResources;
 
 	protected DiscordUser() {
@@ -54,8 +55,8 @@ public class DiscordUser {
 	@Override
 	public String toString() {
 		return String.format(
-				"Discord user [id='%d', discordId='%d', discordUsername='%s', creationDate='%s', lastChange='%s', accessToken='%s']",
-				this.id, this.discordId, this.discordUsername, this.creationDate, this.lastChange, this.accessToken);
+				"Discord user [id='%d', discordId='%d', discordUsername='%s', creationDate='%s', lastChange='%s', accessToken='%s', resources='%s']",
+				this.id, this.discordId, this.discordUsername, this.creationDate, this.lastChange, this.accessToken, discordResources);
 	}
 
 	public Long getDiscordId() {
