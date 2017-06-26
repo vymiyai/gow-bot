@@ -8,13 +8,18 @@ import sx.blah.discord.handle.obj.IUser;
 @Component
 public class RipBotCommand implements IBotCommand {
 
+	private final Long GOW_BOT_ID = 318068287692865536L;
+	
 	@Override
 	public String execute(String[] tokenizedMessage, MessageReceivedEvent event) {
 
 		String mention = "";
 		if (event != null) {
 			for (IUser user : event.getMessage().getMentions())
-				mention += user.mention() + " ";
+				if(user.getLongID() == this.GOW_BOT_ID)
+					return "Nobody tells me to !rip myself!";
+				else 
+					mention += user.mention() + " ";
 		}
 
 		return mention + "Serves you right! lol";

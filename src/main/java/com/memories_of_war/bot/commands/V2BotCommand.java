@@ -22,6 +22,8 @@ import sx.blah.discord.handle.obj.IUser;
 public class V2BotCommand implements IBotCommand {
 
 	private final Integer V2_ROCKET_GEM_COST = 20;
+	
+	private final Long GOW_BOT_ID = 318068287692865536L;
 
 	@Autowired
 	private DiscordUserRepository dur;
@@ -86,6 +88,10 @@ public class V2BotCommand implements IBotCommand {
 			// retrieve target user.
 			IUser target = mentions.get(0);
 			DiscordUser targetUser = dur.findByDiscordId(target.getLongID());
+			
+			// return early if the target is the bot itself.
+			if(target.getLongID() == this.GOW_BOT_ID)
+				throw new Exception("nice try scrub.");
 
 			// throw error if user doesn't exist in the database.
 			if (targetUser == null)
