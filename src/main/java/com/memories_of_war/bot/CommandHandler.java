@@ -113,7 +113,7 @@ public class CommandHandler {
 		// assemble and return the welcome message.
 		StringBuilder response = new StringBuilder();
 		response.append(event.getUser().mention());
-		response.append("* and ofc they cater to the non existant newbies than the vets still playing everyday. sigh*\n\n");
+		response.append(" *and ofc they cater to the non existant newbies than the vets still playing everyday. sigh*\n\n");
 		response.append("**Welcome to the community-managed March of War Discord server. I am VietnamVet-bot, in short, VV-bot.**\n\n");
 		
 		response.append("```- Feel free to ask around for information about the original game's outcome, complain about the EA Spy or to get to know what the community has been doing to try to revive the game.\n\n");

@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.memories_of_war.bot.database.DiscordResources;
 import com.memories_of_war.bot.database.DiscordResourcesRepository;
@@ -121,6 +122,7 @@ public class JoinBotCommand implements IBotCommand {
 
 			return mention + "Character " + username + " created.";
 		} catch (Exception e) {
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 			return mention + e.getMessage();
 		}
 	}

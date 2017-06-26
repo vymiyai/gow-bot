@@ -37,6 +37,8 @@ public class StatsBotCommand implements IBotCommand {
 
 			StringBuilder sb = new StringBuilder();
 			sb.append(mention);
+			sb.append("\n\n");
+			sb.append(user.getDiscordUsername());
 			sb.append("'s statistics:\n\n");
 			sb.append(":gem: Gems: ").append(resources.getGems()).append("/1000 | ");
 			sb.append("Gems spent: ").append(resources.getSpentGems()).append("\n");

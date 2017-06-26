@@ -8,6 +8,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import com.memories_of_war.bot.database.DiscordResources;
 import com.memories_of_war.bot.database.DiscordUser;
@@ -117,6 +118,7 @@ public class RaffleBotCommand implements IBotCommand {
 			return mention + response;
 
 		} catch (Exception e) {
+			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
 			return mention + e.getMessage();
 		}
 	}
