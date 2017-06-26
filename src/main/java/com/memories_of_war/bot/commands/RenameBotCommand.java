@@ -23,7 +23,7 @@ public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
 		try {
 			// check for exactly two arguments.
 			if (tokenizedMessage.length != 2)
-				throw new Exception("The !rename command takes exactly one parameter (e.g. !rename <character_name>).");
+				throw new Exception("The !rename command takes exactly one parameter (e.g. !rename character_name).");
 
 			String username = tokenizedMessage[1];
 
@@ -61,7 +61,7 @@ public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Type !rename <character_name> to change your application user name.";
+		return "Type !rename <character_name> to change your character name.";
 	}
 
 }

@@ -7,6 +7,8 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 
 @Component
 public class V2BotCommand implements IBotCommand {
+	
+	private final Integer V2_ROCKET_GEM_COST = 20;
 
 	@Override
 	@Transactional
@@ -22,7 +24,7 @@ public class V2BotCommand implements IBotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Type !v2 @someone to increase the target's cooldown by 1 hour. Costs 20 gems to deploy.";
+		return "Type !v2 @someone to increase the target's cooldown by 1 hour. Costs " + this.V2_ROCKET_GEM_COST + " gems to deploy.";
 	}
 
 }

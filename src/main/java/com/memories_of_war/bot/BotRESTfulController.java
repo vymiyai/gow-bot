@@ -88,7 +88,7 @@ public class BotRESTfulController {
 		// fetch customers by last name
 		log.info("Customer found with findByUsername('user4'):");
 		log.info("--------------------------------------------");
-		for (DiscordUser bauer : dur.findByDiscordUsername("user4")) {
+		for (DiscordUser bauer : dur.findByDiscordUsernameIgnoreCase("user4")) {
 			log.info(bauer.toString());
 		}
 		

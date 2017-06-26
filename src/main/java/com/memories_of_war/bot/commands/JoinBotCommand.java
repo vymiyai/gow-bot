@@ -37,7 +37,7 @@ public class JoinBotCommand implements IBotCommand {
 	@Autowired
 	protected DiscordUserRepository discordUserRepository;
 
-	protected Integer MAXIMUM_USERNAME_LENGTH = 32;
+	protected final Integer MAXIMUM_USERNAME_LENGTH = 32;
 
 	protected String pattern = "^[a-zA-Z0-9_]+$";
 
@@ -86,7 +86,7 @@ public class JoinBotCommand implements IBotCommand {
 	 * @throws UsernameAlreadyExistsException
 	 */
 	protected boolean isUsernameAvailable(String username) throws UsernameAlreadyExistsException {
-		List<DiscordUser> results = this.discordUserRepository.findByDiscordUsername(username);
+		List<DiscordUser> results = this.discordUserRepository.findByDiscordUsernameIgnoreCase(username);
 		if (results.isEmpty())
 			return true;
 		else
@@ -102,7 +102,7 @@ public class JoinBotCommand implements IBotCommand {
 		try {
 			// check for exactly two arguments.
 			if (tokenizedMessage.length != 2)
-				throw new Exception("The !join command takes exactly one parameter (e.g. !join <character_name>).");
+				throw new Exception("The !join command takes exactly one parameter (e.g. !join character_name).");
 
 			String username = tokenizedMessage[1];
 

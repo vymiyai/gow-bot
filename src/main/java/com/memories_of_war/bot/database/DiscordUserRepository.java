@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface DiscordUserRepository extends CrudRepository<DiscordUser, Long> {
 
-	List<DiscordUser> findByDiscordUsername(String discordUsername);
+	List<DiscordUser> findByDiscordUsernameIgnoreCase(String discordUsername);
 	
 	List<DiscordUser> findByDiscordId(Long discordId);
 }
