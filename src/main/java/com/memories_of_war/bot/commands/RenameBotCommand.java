@@ -21,7 +21,7 @@ public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
 		Long discordId = event.getAuthor().getLongID();
 
 		try {
-			// check for exactly two arguments.
+			// check for exactly one argument.
 			if (tokenizedMessage.length != 2)
 				throw new Exception("The !rename command takes exactly one parameter (e.g. !rename character_name).");
 

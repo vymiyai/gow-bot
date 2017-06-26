@@ -100,7 +100,7 @@ public class JoinBotCommand implements IBotCommand {
 		Long discordId = event.getAuthor().getLongID();
 
 		try {
-			// check for exactly two arguments.
+			// check for exactly one argument.
 			if (tokenizedMessage.length != 2)
 				throw new Exception("The !join command takes exactly one parameter (e.g. !join character_name).");
 

@@ -31,9 +31,9 @@ public class RaffleBotCommand implements IBotCommand {
 		String mention = event.getAuthor().mention() + " ";
 		Long discordId = event.getAuthor().getLongID();
 
-		List<DiscordUser> users = dur.findByDiscordId(discordId);
-
 		try {
+			List<DiscordUser> users = dur.findByDiscordId(discordId);
+			
 			// discordIds are unique, so there are at most 1 DiscordUsers with
 			// such id.
 			if (users.isEmpty())
