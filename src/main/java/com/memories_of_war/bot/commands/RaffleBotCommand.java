@@ -2,7 +2,6 @@ package com.memories_of_war.bot.commands;
 
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
