@@ -72,7 +72,7 @@ public class JoinBotCommand implements IBotCommand {
 	 */
 	private boolean isFirstCharacter(Long discordId) throws UserAlreadyExistsException {
 		List<DiscordUser> results = this.discordUserRepository.findByDiscordId(discordId);
-		if (results.size() == 0)
+		if (results.isEmpty())
 			return true;
 		else
 			throw new UserAlreadyExistsException();
@@ -86,7 +86,7 @@ public class JoinBotCommand implements IBotCommand {
 	 */
 	protected boolean isUsernameAvailable(String username) throws UsernameAlreadyExistsException {
 		List<DiscordUser> results = this.discordUserRepository.findByDiscordUsername(username);
-		if (results.size() == 0)
+		if (results.isEmpty())
 			return true;
 		else
 			throw new UsernameAlreadyExistsException();
@@ -101,7 +101,7 @@ public class JoinBotCommand implements IBotCommand {
 		try {
 			// check for exactly two arguments.
 			if (tokenizedMessage.length != 2)
-				throw new Exception("The !join command takes exactly one parameter (e.g. !join username).");
+				throw new Exception("The !join command takes exactly one parameter (e.g. !join <character_name>).");
 
 			String username = tokenizedMessage[1];
 
@@ -119,7 +119,7 @@ public class JoinBotCommand implements IBotCommand {
 			// should work because of cascade.
 			this.discordUserRepository.save(newUser);
 
-			return mention + "User " + username + " created.";
+			return mention + "Character " + username + " created.";
 		} catch (Exception e) {
 			return mention + e.getMessage();
 		}
@@ -132,7 +132,7 @@ public class JoinBotCommand implements IBotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Type !join <your_name_here> to register your Discord user into the database.";
+		return "Type !join <character_name> to register your Discord user into the database.";
 	}
 
 }

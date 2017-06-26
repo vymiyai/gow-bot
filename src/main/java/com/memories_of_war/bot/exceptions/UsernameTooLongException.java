@@ -5,6 +5,6 @@ public class UsernameTooLongException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return "Error: User name length exceeds 32 characters.";
+		return "Error: Character name length exceeds 32 characters.";
 	}
 }

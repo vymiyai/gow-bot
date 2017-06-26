@@ -6,6 +6,6 @@ public class UserAlreadyExistsException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return "Error: Discord user already exists.";
+		return "Error: There are no free character slots for a new character.";
 	}
 }

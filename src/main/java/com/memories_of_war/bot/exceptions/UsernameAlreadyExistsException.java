@@ -6,6 +6,6 @@ public class UsernameAlreadyExistsException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return "Error: The user name is already in use.";
+		return "Error: The requested character name is already in use.";
 	}
 }
