@@ -1,7 +1,5 @@
 package com.memories_of_war.bot.commands;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
@@ -30,17 +28,13 @@ public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
 			this.isValidUsername(username);
 			this.isUsernameAvailable(username);
 
-			// retrieve existing DiscordUsers.
-			List<DiscordUser> users = this.discordUserRepository.findByDiscordId(discordId);
+			// retrieve DiscordUser.
+			DiscordUser user = this.discordUserRepository.findByDiscordId(discordId);
 
-			// discordIds are unique, so there are at most 1 DiscordUsers with
-			// such id.
-			if (users.isEmpty())
+			// throw error if the user was not found.
+			if (user == null)
 				throw new UserDoesNotExistException();
-
-			// get the first and only entry.
-			DiscordUser user = users.get(0);
-
+			
 			// get old username.
 			String oldUsername = user.getDiscordUsername();
 

@@ -32,15 +32,12 @@ public class RaffleBotCommand implements IBotCommand {
 		Long discordId = event.getAuthor().getLongID();
 
 		try {
-			List<DiscordUser> users = dur.findByDiscordId(discordId);
+			DiscordUser user = dur.findByDiscordId(discordId);
 			
-			// discordIds are unique, so there are at most 1 DiscordUsers with
-			// such id.
-			if (users.isEmpty())
+			// throw error if user not found.
+			if (user == null)
 				throw new UserDoesNotExistException();
 
-			// get the first and only entry.
-			DiscordUser user = users.get(0);
 			DiscordResources resources = user.getDiscordResources();
 
 			if (resources.getGems() == this.MAXIMUM_NUMBER_OF_GEMS)

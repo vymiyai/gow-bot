@@ -1,6 +1,5 @@
 package com.memories_of_war.bot.commands;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,9 +20,10 @@ import com.memories_of_war.bot.exceptions.UsernameWithInvalidCharactersException
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
 /**
- * Creates a new DiscordUser in the database if the following applies: 1 - user
- * has no registered character yet. 2 - user name is valid. 3 - user name
- * doesn't exist yet.
+ * Creates a new DiscordUser in the database if the following applies: 
+ * 1 - user has no registered character yet. 
+ * 2 - user name is valid. 
+ * 3 - user name doesn't exist yet.
  * 
  * @author vymiyai
  *
@@ -72,8 +72,7 @@ public class JoinBotCommand implements IBotCommand {
 	 * @throws UserAlreadyExistsException
 	 */
 	private boolean isFirstCharacter(Long discordId) throws UserAlreadyExistsException {
-		List<DiscordUser> results = this.discordUserRepository.findByDiscordId(discordId);
-		if (results.isEmpty())
+		if (this.discordUserRepository.findByDiscordId(discordId) == null)
 			return true;
 		else
 			throw new UserAlreadyExistsException();
@@ -86,8 +85,7 @@ public class JoinBotCommand implements IBotCommand {
 	 * @throws UsernameAlreadyExistsException
 	 */
 	protected boolean isUsernameAvailable(String username) throws UsernameAlreadyExistsException {
-		List<DiscordUser> results = this.discordUserRepository.findByDiscordUsernameIgnoreCase(username);
-		if (results.isEmpty())
+		if (this.discordUserRepository.findByDiscordUsernameIgnoreCase(username) == null)
 			return true;
 		else
 			throw new UsernameAlreadyExistsException();

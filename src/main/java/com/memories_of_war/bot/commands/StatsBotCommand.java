@@ -1,7 +1,5 @@
 package com.memories_of_war.bot.commands;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -20,19 +18,16 @@ public class StatsBotCommand implements IBotCommand {
 
 	@Override
 	public String execute(String[] tokenizedMessage, MessageReceivedEvent event) {
-
 		String mention = event.getAuthor().mention() + " ";
-
 		Long discordId = event.getAuthor().getLongID();
-		List<DiscordUser> users = dur.findByDiscordId(discordId);
-
+		
 		try {
-			if (users.isEmpty())
+			DiscordUser user = dur.findByDiscordId(discordId);
+			
+			// throw error if user is not defined.
+			if (user == null)
 				throw new UserDoesNotExistException();
-
-			// since discordId has a uniqueness guarantee from the schema, there
-			// should be only 1 or 0 results.
-			DiscordUser user = users.get(0);
+			
 			DiscordResources resources = user.getDiscordResources();
 
 			StringBuilder sb = new StringBuilder();
