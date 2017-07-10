@@ -66,7 +66,8 @@ public class GlossaryBotCommand implements IBotCommand {
 		dictionary.put("Oldy", "Oldy, Oldie - A player who has played MoW since day one or at least before the player who mentioned it.");
 		dictionary.put("Oldie", "Oldy, Oldie - A player who has played MoW since day one or at least before the player who mentioned it.");
 		dictionary.put("WL", "WL - World Leaders chat, the chat reserved for High Commanders and Faction Leaders.");
-
+		dictionary.put("GIRL", "GIRL - Guy In Real Life.");
+		
 		String mention = event.getAuthor().mention() + " ";
 
 		// if there were no arguments, return the list of existing terms.
