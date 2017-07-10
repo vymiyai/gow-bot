@@ -14,6 +14,9 @@ public class GlossaryBotCommand implements IBotCommand {
 		
 		// create dictionary.
 		TreeMap<String, String> dictionary = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
+		
+		// faction related stuff.
+		
 		String aw = "AW - African Warlords, identified by the color yellow and flag " + Emotes.AW + "\nWikia: http://marchofwar.wikia.com/wiki/The_African_Warlords";
 		String se = "SE - Shogun Empire, identified by the color white or gray and flag " + Emotes.SE + "\nWikia: http://marchofwar.wikia.com/wiki/The_Shogun_Empire";
 		String ea = "EA - European Alliance, identified by the color purple or dark blue and flag " + Emotes.EA + "\nWikia: http://marchofwar.wikia.com/wiki/European_Alliance";
@@ -67,6 +70,16 @@ public class GlossaryBotCommand implements IBotCommand {
 		dictionary.put("Oldie", "Oldy, Oldie - A player who has played MoW since day one or at least before the player who mentioned it.");
 		dictionary.put("WL", "WL - World Leaders chat, the chat reserved for High Commanders and Faction Leaders.");
 		dictionary.put("GIRL", "GIRL - Guy In Real Life.");
+		
+		// Avant-Guard, Solace Workshop related.
+		
+		String sw = "Solace Workshop is a community-founded organization run by volunteer-efforts in the mission of restoring abandonware, namely video games. Solace's current project is entitled Avant-Guard, the revitalization of ISOTX's March of War.";
+		dictionary.put("SW", sw);
+		dictionary.put("Solace Workshop", sw);
+		
+		String ag = "Avant-Guard is the codename for the project of creating a spiritual successor to March of War. More information can be found at our website, coming soon.";
+		dictionary.put("AG", ag);
+		dictionary.put("Avant-Guard", ag);
 		
 		String mention = event.getAuthor().mention() + " ";
 
