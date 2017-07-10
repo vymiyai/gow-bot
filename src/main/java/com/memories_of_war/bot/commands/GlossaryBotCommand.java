@@ -14,12 +14,19 @@ public class GlossaryBotCommand implements IBotCommand {
 		
 		// create dictionary.
 		TreeMap<String, String> dictionary = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
-		dictionary.put("AW", "AW - African Warlords, identified by the color yellow and flag " + Emotes.AW);
-		dictionary.put("SE", "SE - Shogun Empire, identified by the color white or gray and flag " + Emotes.SE);
-		dictionary.put("EA", "EA - European Alliance, identified by the color purple or dark blue and flag " + Emotes.EA);
-		dictionary.put("UR", "UR - United Republic, identified by the color light blue or cyan and flag " + Emotes.UR);
-		dictionary.put("SU", "SU - Soviet Union, identified by the color red and flag " + Emotes.SU);
-		dictionary.put("LJ", "LJ - Latin Junta, identified by the color green and flag " + Emotes.LJ);
+		String aw = "AW - African Warlords, identified by the color yellow and flag " + Emotes.AW + "\nLore and units: http://marchofwar.wikia.com/wiki/The_African_Warlords";
+		String se = "SE - Shogun Empire, identified by the color white or gray and flag " + Emotes.SE + "\nLore and units: http://marchofwar.wikia.com/wiki/The_Shogun_Empire";
+		String ea = "EA - European Alliance, identified by the color purple or dark blue and flag " + Emotes.EA + "\nLore and units: http://marchofwar.wikia.com/wiki/European_Alliance";
+		String ur = "UR - United Republic, identified by the color light blue or cyan and flag " + Emotes.UR + "\nLore and units: http://marchofwar.wikia.com/wiki/United_Republic";
+		String su = "SU - Soviet Union, identified by the color red and flag " + Emotes.SU + "\nLore and units: http://marchofwar.wikia.com/wiki/The_Soviet_Union";
+		String lj = "LJ - Latin Junta, identified by the color green and flag " + Emotes.LJ + "\nLore and units: http://marchofwar.wikia.com/wiki/The_Latin_Junta";
+		
+		dictionary.put("AW", aw);
+		dictionary.put("SE", se);
+		dictionary.put("EA", ea);
+		dictionary.put("UR", ur);
+		dictionary.put("SU", su);
+		dictionary.put("LJ", lj);
 		dictionary.put("MoW", "MoW - March of War, the name of the game.");
 		dictionary.put("HC", "HC - High Command, the top 10% active users of a faction who could vote to attack territories.");
 		dictionary.put("FL", "FL - Faction leader, the leader of a faction elected by the majority of votes every 2 weeks.");

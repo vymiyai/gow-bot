@@ -5,6 +5,6 @@ public class UsernameWithInvalidCharactersException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return "Error: Character name must contain only alphanummeric symbols and underscores (\"_\").";
+		return "Error: Character name must contain only alphanumeric symbols and underscores (\"_\").";
 	}
 }
