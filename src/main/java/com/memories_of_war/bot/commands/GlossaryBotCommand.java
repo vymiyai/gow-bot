@@ -14,12 +14,12 @@ public class GlossaryBotCommand implements IBotCommand {
 		
 		// create dictionary.
 		TreeMap<String, String> dictionary = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
-		String aw = "AW - African Warlords, identified by the color yellow and flag " + Emotes.AW + "\nLore and units: http://marchofwar.wikia.com/wiki/The_African_Warlords";
-		String se = "SE - Shogun Empire, identified by the color white or gray and flag " + Emotes.SE + "\nLore and units: http://marchofwar.wikia.com/wiki/The_Shogun_Empire";
-		String ea = "EA - European Alliance, identified by the color purple or dark blue and flag " + Emotes.EA + "\nLore and units: http://marchofwar.wikia.com/wiki/European_Alliance";
-		String ur = "UR - United Republic, identified by the color light blue or cyan and flag " + Emotes.UR + "\nLore and units: http://marchofwar.wikia.com/wiki/United_Republic";
-		String su = "SU - Soviet Union, identified by the color red and flag " + Emotes.SU + "\nLore and units: http://marchofwar.wikia.com/wiki/The_Soviet_Union";
-		String lj = "LJ - Latin Junta, identified by the color green and flag " + Emotes.LJ + "\nLore and units: http://marchofwar.wikia.com/wiki/The_Latin_Junta";
+		String aw = "AW - African Warlords, identified by the color yellow and flag " + Emotes.AW + "\nWikia: http://marchofwar.wikia.com/wiki/The_African_Warlords";
+		String se = "SE - Shogun Empire, identified by the color white or gray and flag " + Emotes.SE + "\nWikia: http://marchofwar.wikia.com/wiki/The_Shogun_Empire";
+		String ea = "EA - European Alliance, identified by the color purple or dark blue and flag " + Emotes.EA + "\nWikia: http://marchofwar.wikia.com/wiki/European_Alliance";
+		String ur = "UR - United Republic, identified by the color light blue or cyan and flag " + Emotes.UR + "\nWikia: http://marchofwar.wikia.com/wiki/United_Republic";
+		String su = "SU - Soviet Union, identified by the color red and flag " + Emotes.SU + "\nWikia: http://marchofwar.wikia.com/wiki/The_Soviet_Union";
+		String lj = "LJ - Latin Junta, identified by the color green and flag " + Emotes.LJ + "\nWikia: http://marchofwar.wikia.com/wiki/The_Latin_Junta";
 		
 		dictionary.put("AW", aw);
 		dictionary.put("SE", se);
