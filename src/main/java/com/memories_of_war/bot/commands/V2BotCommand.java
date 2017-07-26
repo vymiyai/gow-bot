@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
@@ -62,7 +63,7 @@ public class V2BotCommand implements IBotCommand {
 	}
 
 	@Override
-	@Transactional
+	@Transactional(isolation=Isolation.SERIALIZABLE)
 	public String execute(String[] tokenizedMessage, MessageReceivedEvent event) {
 		String mention = event.getAuthor().mention() + " ";
 		Long discordId = event.getAuthor().getLongID();
