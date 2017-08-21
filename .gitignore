@@ -26,3 +26,7 @@ hs_err_pid*
 .project
 .settings/
 target/
+
+# intellij crap.
+.idea/
+gow-bot.iml
