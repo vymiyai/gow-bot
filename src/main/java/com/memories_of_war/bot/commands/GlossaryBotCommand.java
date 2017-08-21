@@ -70,6 +70,11 @@ public class GlossaryBotCommand implements IBotCommand {
 		dictionary.put("Oldie", "Oldy, Oldie - A player who has played MoW since day one or at least before the player who mentioned it.");
 		dictionary.put("WL", "WL - World Leaders chat, the chat reserved for High Commanders and Faction Leaders.");
 		dictionary.put("GIRL", "GIRL - Guy In Real Life.");
+
+		// tl;dr
+		String tldr = "March of War servers were plugged off at 00:00 February 1st 2016, presumably when ISOTX went bankrupt and ceased to exist after the failure of their single-player episode campaign \"Stormsiege\" (previously named \"Mystery Island\").\n- It is assumed that all user data from the game was wiped with the servers, which makes it impossible to recover the world and user states when the game went offline.\n- Some former players organized themselves in order to create spiritual successor to MoW. Currently, there is no expected date of release for any revival project. Type !glossary SW and !glossary AG for more information.\n- If you have questions about the revival effort, check the #ask_solace_workshop channel.";
+		dictionary.put("TL;DR", tldr);
+		dictionary.put("TLDR", tldr);
 		
 		// Avant-Guard, Solace Workshop related.
 		
@@ -77,7 +82,7 @@ public class GlossaryBotCommand implements IBotCommand {
 		dictionary.put("SW", sw);
 		dictionary.put("Solace Workshop", sw);
 		
-		String ag = "Avant-Guard is the codename for the project of creating a spiritual successor to March of War. More information can be found at our website, coming soon.";
+		String ag = "Avant-Guard is the codename for the project of creating a spiritual successor to March of War. More information can be found at our website, https://solaceworkshop.wixsite.com/avantguard";
 		dictionary.put("AG", ag);
 		dictionary.put("Avant-Guard", ag);
 		
