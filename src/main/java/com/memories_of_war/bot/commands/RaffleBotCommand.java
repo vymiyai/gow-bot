@@ -40,7 +40,7 @@ public class RaffleBotCommand implements IBotCommand {
 
 			DiscordResources resources = user.getDiscordResources();
 
-			if (resources.getGems() == this.MAXIMUM_NUMBER_OF_GEMS)
+			if (resources.getGems().equals(this.MAXIMUM_NUMBER_OF_GEMS))
 				return mention + "maximum number of gems reached (" + this.MAXIMUM_NUMBER_OF_GEMS + " :gem:).";
 
 			// calculate time difference.

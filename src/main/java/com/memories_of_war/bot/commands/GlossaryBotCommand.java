@@ -112,7 +112,6 @@ public class GlossaryBotCommand implements IBotCommand {
 				"- Heavy walkers \n" +
 				"\n" +
 				"Weak Points\n" +
-				"\n" +
 				"- Average infantry\n" +
 				"- Little heavy infantry \n" +
 				"\n" +
