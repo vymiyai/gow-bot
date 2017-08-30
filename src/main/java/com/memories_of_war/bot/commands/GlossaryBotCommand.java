@@ -17,12 +17,132 @@ public class GlossaryBotCommand implements IBotCommand {
 		
 		// faction related stuff.
 		
-		String aw = "AW - African Warlords, identified by the color yellow and flag " + Emotes.AW + "\nWikia: http://marchofwar.wikia.com/wiki/The_African_Warlords";
-		String se = "SE - Shogun Empire, identified by the color white or gray and flag " + Emotes.SE + "\nWikia: http://marchofwar.wikia.com/wiki/The_Shogun_Empire";
-		String ea = "EA - European Alliance, identified by the color purple or dark blue and flag " + Emotes.EA + "\nWikia: http://marchofwar.wikia.com/wiki/European_Alliance";
-		String ur = "UR - United Republic, identified by the color light blue or cyan and flag " + Emotes.UR + "\nWikia: http://marchofwar.wikia.com/wiki/United_Republic";
-		String su = "SU - Soviet Union, identified by the color red and flag " + Emotes.SU + "\nWikia: http://marchofwar.wikia.com/wiki/The_Soviet_Union";
-		String lj = "LJ - Latin Junta, identified by the color green and flag " + Emotes.LJ + "\nWikia: http://marchofwar.wikia.com/wiki/The_Latin_Junta";
+		String aw = "AW - African Warlords\n" +
+				"\n" +
+				"Map color: yellow\n" +
+				"\n" +
+				"Strong Points\n" +
+				"- Good quality Infantry\n" +
+				"- Cheap, fast vehicles\n" +
+				"- Mighty war beasts\n" +
+				"- Ferocious melee attacks \n" +
+				"\n" +
+				"Weak Points\n" +
+				"- Few long range weapons\n" +
+				"- Limited support units \n" +
+				"\n" +
+				"Home Territories\n" +
+				"- Middle East\n" +
+				"- Egypt\n" +
+				"- Sudan \n" +
+				"\n" +
+				"More information at: http://marchofwar.wikia.com/wiki/African_Warlords";
+
+		String se = "SE - Shogun Empire\n" +
+				"\n" +
+				"Map color: white/gray\n" +
+				"\n" +
+				"Strong Points\n" +
+				"- Infantry melee attacks\n" +
+				"- Fast, cheap light tanks\n" +
+				"- Rocket artillery\n" +
+				"- Flame weaponry \n" +
+				"\n" +
+				"Weak Points\n" +
+				"- Few heavy vehicles\n" +
+				"- Limited AT options \n" +
+				"\n" +
+				"Home Territories\n" +
+				"- Beijing\n" +
+				"- Japan\n" +
+				"- Korea \n" +
+				"\n" +
+				"More information at: http://marchofwar.wikia.com/wiki/The_Shogun_Empire";
+
+		String ea = "EA - European Alliance\n" +
+				"\n" +
+				"Map color: purple/dark blue\n" +
+				"\n" +
+				"Strong Points\n" +
+				"- Tough Units\n" +
+				"- Heavy Tanks\n" +
+				"- Varied Support Infantry\n" +
+				"- Long Ranged Weapons \n" +
+				"\n" +
+				"Weak Points\n" +
+				"- Expensive Units\n" +
+				"- Limited Artillery \n" +
+				"\n" +
+				"Home Territories\n" +
+				"- England\n" +
+				"- Northern France\n" +
+				"- Western Germany \n" +
+				"\n" +
+				"More information at: http://marchofwar.wikia.com/wiki/European_Alliance";
+
+		String ur = "UR - United Republic\n" +
+				"\n" +
+				"Map color: cyan\n" +
+				"\n" +
+				"Strong Points\n" +
+				"- Plentiful artillery\n" +
+				"- Strike command powers\n" +
+				"- Healing units & powers\n" +
+				"- Variety of air units \n" +
+				"\n" +
+				"Weak Points\n" +
+				"- Average Tanks\n" +
+				"- Few heavy units \n" +
+				"\n" +
+				"Home Territories\n" +
+				"- Mid-Atlantic\n" +
+				"- Ontario\n" +
+				"- Appalachian Basin \n" +
+				"\n" +
+				"More information at: http://marchofwar.wikia.com/wiki/United_Republic";
+
+		String su = "SU - Soviet Union\n" +
+				"\n" +
+				"Map color: red\n" +
+				"\n" +
+				"Strong Points\n" +
+				"- Wide range of units\n" +
+				"- Support weapons\n" +
+				"- Potent propaganda\n" +
+				"- Heavy walkers \n" +
+				"\n" +
+				"Weak Points\n" +
+				"\n" +
+				"- Average infantry\n" +
+				"- Little heavy infantry \n" +
+				"\n" +
+				"Home Territories\n" +
+				"- Ukraine\n" +
+				"- Moscow\n" +
+				"- Central Urals \n" +
+				"\n" +
+				"More information at: http://marchofwar.wikia.com/wiki/The_Soviet_Union";
+
+		String lj = "LJ - Latin Junta\n" +
+				"\n" +
+				"Map color: green\n" +
+				"\n" +
+				"Strong Points\n" +
+				"- Fast, cheap scouts\n" +
+				"- Hard hitting units\n" +
+				"- Short range artillery\n" +
+				"- Chemical warfare \n" +
+				"\n" +
+				"Weak Points\n" +
+				"- Expensive vehicles\n" +
+				"- Fragile elite infantry \n" +
+				"\n" +
+				"Home Territories\n" +
+				"- Rio de Janeiro\n" +
+				"- Sao Paulo\n" +
+				"- Buenos Aires \n" +
+				"\n" +
+				"More information at: http://marchofwar.wikia.com/wiki/The_Latin_Junta";
 		
 		dictionary.put("AW", aw);
 		dictionary.put("SE", se);
@@ -70,9 +190,10 @@ public class GlossaryBotCommand implements IBotCommand {
 		dictionary.put("Oldie", "Oldy, Oldie - A player who has played MoW since day one or at least before the player who mentioned it.");
 		dictionary.put("WL", "WL - World Leaders chat, the chat reserved for High Commanders and Faction Leaders.");
 		dictionary.put("GIRL", "GIRL - Guy In Real Life.");
+		dictionary.put("IGM", "IGM - Iron Grip: Marauders. a 2011 game produced by now-extinct ISOTX, the ancestor of March of War.\n\nMore information at: https://en.wikipedia.org/wiki/Iron_Grip:_Marauders");
 
 		// tl;dr
-		String tldr = "March of War servers were plugged off at 00:00 February 1st 2016, presumably when ISOTX went bankrupt and ceased to exist after the failure of their single-player episode campaign \"Stormsiege\" (previously named \"Mystery Island\").\n- It is assumed that all user data from the game was wiped with the servers, which makes it impossible to recover the world and user states when the game went offline.\n- Some former players organized themselves in order to create spiritual successor to MoW. Currently, there is no expected date of release for any revival project. Type !glossary SW and !glossary AG for more information.\n- If you have questions about the revival effort, check the #ask_solace_workshop channel.";
+		String tldr = "March of War servers were plugged off at 00:00 February 1st 2016, presumably when ISOTX went bankrupt and ceased to exist after the failure of their single-player episode campaign \"Stormsiege\" (previously named \"Mystery Island\").\n\n- It is assumed that all user data from the game was wiped with the servers, which makes it impossible to recover the world and user states when the game went offline.\n\n- Some former players organized themselves in order to create spiritual successor to MoW. Currently, there is no expected date of release for any revival project. Type !glossary SW and !glossary AG for more information.\n\n- If you have questions about the revival effort, check the #ask_solace_workshop channel.";
 		dictionary.put("TL;DR", tldr);
 		dictionary.put("TLDR", tldr);
 		
@@ -92,7 +213,7 @@ public class GlossaryBotCommand implements IBotCommand {
 		if (tokenizedMessage.length == 1) {
 			StringBuilder sb = new StringBuilder();
 			sb.append(mention);
-			sb.append("```!glossary <term>\n\n");
+			sb.append("```!glossary term\n\n");
 			sb.append("Terms defined in the glossary:\n\n");
 			
 			String terms = String.join(", ", dictionary.keySet());
@@ -121,7 +242,7 @@ public class GlossaryBotCommand implements IBotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Type !glossary <term> for a brief explanation of its meaning (e.g. !glossary MotD).";
+		return "Type !glossary term for a brief explanation of its meaning (e.g. !glossary MotD).";
 	}
 
 }

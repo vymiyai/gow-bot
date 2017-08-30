@@ -55,7 +55,7 @@ public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Type !rename <character_name> to change your character name.";
+		return "Type !rename character_name to change your character name.";
 	}
 
 }

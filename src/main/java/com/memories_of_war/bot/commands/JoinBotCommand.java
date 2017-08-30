@@ -132,7 +132,7 @@ public class JoinBotCommand implements IBotCommand {
 
 	@Override
 	public String getCommandDescription() {
-		return "Type !join <character_name> to register your Discord user into the database.";
+		return "Type !join character_name to register your Discord user into the database (e.g. !join my_name).";
 	}
 
 }

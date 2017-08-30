@@ -88,7 +88,7 @@ public class VVBotCommand implements IBotCommand {
 				"I mean really, what are you trying to do lol.",
 				"I'd really like to know what your goal is here " + event.getAuthor().mention() + ".",
 				"But it seems the logic here is that if you cant control a faction, kill them with everything else.",
-				"Omg this is hillarious.",
+				"Omg this is hilarious.",
 				"And here we was hoping you would end this conflict between our two factions. You disappoint me, " + event.getAuthor().mention() + ".",
 				"I call bullshit.",
 				"Exactly why I saw this coming a mile away.",

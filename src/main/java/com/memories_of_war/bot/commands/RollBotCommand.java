@@ -92,6 +92,6 @@ public class RollBotCommand implements IBotCommand {
 	
 	@Override
 	public String getCommandDescription() {
-		return "Type !roll <x>d<y> with x and y being positive integer numbers to roll x dices of y faces (e.g. !roll 1d6).";
+		return "Type !roll xdy with x and y being positive integer numbers to roll x dices of y faces (e.g. !roll 1d6).";
 	}
 }
