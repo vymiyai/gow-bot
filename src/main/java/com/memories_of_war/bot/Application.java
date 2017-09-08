@@ -19,17 +19,17 @@ import sx.blah.discord.api.IDiscordClient;
 @SpringBootApplication
 public class Application {
 
-	// Logger.
-	private static final Logger log = LoggerFactory.getLogger(Application.class);
+		// Logger.
+		private static final Logger log = LoggerFactory.getLogger(Application.class);
 
-	// as of 23.06.2017, moving the autowired annotation from the setter to this
-	// property fucks up everything.
-	private static CommandHandler basicCommandHandler;
+		// as of 23.06.2017, moving the autowired annotation from the setter to this
+		// property fucks up everything.
+		private static CommandHandler basicCommandHandler;
 
-	@Autowired
-	private void setBasicCommandHandler(CommandHandler bch) {
-		basicCommandHandler = bch;
-	}
+		@Autowired
+		private void setBasicCommandHandler(CommandHandler bch) {
+			basicCommandHandler = bch;
+		}
 
 	// Discord token for GoW-bot. Same case as the CommandHandler.
 	private static String GOW_TOKEN;

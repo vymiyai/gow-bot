@@ -115,9 +115,11 @@ public class CommandHandler {
 		response.append(event.getUser().mention());
 		response.append(" *and ofc they cater to the non existant newbies than the vets still playing everyday. sigh*\n\n");
 		response.append("**Welcome to the community-managed March of War Discord server. I am VietnamVet-bot, in short, VV-bot.**\n\n");
+
+		response.append("**Please state if you have played the game before, your main faction and how found this Discord server.**\n\n");
 		
 		response.append("```- Feel free to ask around for information about the original game's outcome, complain about the EA Spy or to get to know what the community has been doing to try to revive the game.\n\n");
-		response.append("- Remember to mention to one of the moderators your main faction, so that you can gain access to the faction-specific chats. Mods are identified by their user names in yellow.\n\n");
+		response.append("- Remember to mention to one of the moderators your main faction, so that you can gain access to the faction-specific chats. Users without a faction are regularly kicked from the server.\n\n");
 		response.append("- For questions regarding the project Avant Guard or the organization Solace Workshop, please refer to the users with pink usernames or Nero. While some Solace Workshop members lurk this server regularly, the server and its moderators are not officially associated with the Avant Guard project nor Solace Workshop.\n\n");
 		response.append("- For V²-bot specific commands, type !help for a list of available commands.\n\n");
 		response.append("- If you know other players, be sure to tell them about us!```");
