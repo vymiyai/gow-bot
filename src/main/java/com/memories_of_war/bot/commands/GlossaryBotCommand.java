@@ -189,6 +189,8 @@ public class GlossaryBotCommand implements IBotCommand {
 		dictionary.put("Oldie", "Oldy, Oldie - A player who has played MoW since day one or at least before the player who mentioned it.");
 		dictionary.put("WL", "WL - World Leaders chat, the chat reserved for High Commanders and Faction Leaders.");
 		dictionary.put("GIRL", "GIRL - Guy In Real Life.");
+		dictionary.put("MADAO", "MADAO - MArude DAme na Ossan, a term coined by the anime Gintama that literally means \"Good-for-nothing old man\".");
+		dictionary.put("NEET","NEET - \"Not in Education, Employment, or Training\".");
 		dictionary.put("IGM", "IGM - Iron Grip: Marauders. a 2011 game produced by now-extinct ISOTX, the ancestor of March of War.\n\nMore information at: https://en.wikipedia.org/wiki/Iron_Grip:_Marauders");
 
 		// tl;dr
