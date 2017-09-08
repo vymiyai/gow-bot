@@ -11,7 +11,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 /**
  * Given a String in the format "xdy", rolls a y-sided die x times.
  * 
- * @author vymiyai
+ * @author Darkagma
  *
  */
 @Component

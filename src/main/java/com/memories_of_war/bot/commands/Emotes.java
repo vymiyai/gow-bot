@@ -3,7 +3,7 @@ package com.memories_of_war.bot.commands;
 /**
  * Returns the representation of a Discord emote.
  * Specific to the March of War server owned by Colexiel.
- * @author vymiyai
+ * @author Darkagma
  *
  */
 public enum Emotes {

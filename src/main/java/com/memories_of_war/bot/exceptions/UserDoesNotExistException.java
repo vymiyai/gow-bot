@@ -5,6 +5,6 @@ public class UserDoesNotExistException extends Exception {
 	
 	@Override
 	public String getMessage() {
-		return "Error: You have no registered characters. Use the !join <character_name> command first.";
+		return "Error: You have no registered characters. Use the !join character_name command first.";
 	}
 }

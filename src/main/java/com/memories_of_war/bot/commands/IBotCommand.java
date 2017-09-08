@@ -4,7 +4,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 
 /**
  * 
- * @author vymiyai Interface for simple bot commands.
+ * @author Darkagma Interface for simple bot commands.
  */
 public interface IBotCommand {
 

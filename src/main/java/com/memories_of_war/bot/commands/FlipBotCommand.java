@@ -9,7 +9,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 /**
  * Returns HEADS or TAILS.
  * 
- * @author vymiyai
+ * @author Darkagma
  *
  */
 @Component

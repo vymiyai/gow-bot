@@ -25,7 +25,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
  * 2 - user name is valid. 
  * 3 - user name doesn't exist yet.
  * 
- * @author vymiyai
+ * @author Darkagma
  *
  */
 @Component

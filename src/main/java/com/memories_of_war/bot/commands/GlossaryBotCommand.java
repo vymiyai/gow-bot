@@ -198,11 +198,11 @@ public class GlossaryBotCommand implements IBotCommand {
 		
 		// Avant-Guard, Solace Workshop related.
 		
-		String sw = "Solace Workshop is a community-founded organization run by volunteer-efforts in the mission of restoring abandonware, namely video games. Solace's current project is entitled Avant-Guard, the revitalization of ISOTX's March of War.";
+		String sw = "SW, Solace Workshop is a community-founded organization run by volunteer-efforts in the mission of restoring abandonware, namely video games. Solace's current project is entitled Avant-Guard, the revitalization of ISOTX's March of War.";
 		dictionary.put("SW", sw);
 		dictionary.put("Solace Workshop", sw);
 		
-		String ag = "Avant-Guard is the codename for the project of creating a spiritual successor to March of War. More information can be found at our website, https://solaceworkshop.wixsite.com/avantguard";
+		String ag = "AG, Avant-Guard is the codename for the project of creating a spiritual successor to March of War. More information can be found at their website, https://solaceworkshop.wixsite.com/avantguard";
 		dictionary.put("AG", ag);
 		dictionary.put("Avant-Guard", ag);
 		
