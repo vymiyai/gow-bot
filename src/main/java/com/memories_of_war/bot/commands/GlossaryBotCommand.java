@@ -10,7 +10,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 public class GlossaryBotCommand implements IBotCommand {
 
 	@Override
-	public String execute(String[] tokenizedMessage, MessageReceivedEvent event) {
+	public void execute(String[] tokenizedMessage, MessageReceivedEvent event) {
 		
 		// create dictionary.
 		TreeMap<String, String> dictionary = new TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER);
@@ -220,7 +220,8 @@ public class GlossaryBotCommand implements IBotCommand {
 			String terms = String.join(", ", dictionary.keySet());
 			sb.append(terms);
 			sb.append("```");
-			return sb.toString();
+			event.getChannel().sendMessage(sb.toString());
+			return;
 		}
 
 		// reassemble the searched term.
@@ -231,9 +232,9 @@ public class GlossaryBotCommand implements IBotCommand {
 		String key = String.join(" ", term);
 		String definition = dictionary.get(key);
 		if (definition == null)
-			return mention + " Error: The term \"" + key + "\" is not defined. Type !glossary for the list of defined terms.";
+			event.getChannel().sendMessage(mention + " Error: The term \"" + key + "\" is not defined. Type !glossary for the list of defined terms.");
 		else
-			return definition;
+			event.getChannel().sendMessage(definition);
 	}
 
 	@Override

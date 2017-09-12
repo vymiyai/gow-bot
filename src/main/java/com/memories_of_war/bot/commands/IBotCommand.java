@@ -8,9 +8,9 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
  */
 public interface IBotCommand {
 
-	public String execute(String[] tokenizedMessage, MessageReceivedEvent event);
+	public void execute(String[] tokenizedMessage, MessageReceivedEvent event);
 
 	public String getCommandName();
-	
+
 	public String getCommandDescription();
 }

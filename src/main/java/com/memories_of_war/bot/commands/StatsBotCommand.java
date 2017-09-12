@@ -1,5 +1,12 @@
 package com.memories_of_war.bot.commands;
 
+import com.memories_of_war.bot.exceptions.VVBotException;
+import com.memories_of_war.bot.utils.Colors;
+import com.memories_of_war.bot.utils.Emotes;
+import com.memories_of_war.bot.utils.Flags;
+import com.memories_of_war.bot.utils.Ranks;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,15 +16,25 @@ import com.memories_of_war.bot.database.DiscordUserRepository;
 import com.memories_of_war.bot.exceptions.UserDoesNotExistException;
 
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
+import sx.blah.discord.handle.obj.IGuild;
+import sx.blah.discord.handle.obj.IRole;
+import sx.blah.discord.handle.obj.IUser;
+import sx.blah.discord.util.EmbedBuilder;
+
+import java.awt.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class StatsBotCommand implements IBotCommand {
+
+    private static final Logger log = LoggerFactory.getLogger(StatsBotCommand.class);
 
 	@Autowired
 	private DiscordUserRepository dur;
 
 	@Override
-	public String execute(String[] tokenizedMessage, MessageReceivedEvent event) {
+	public void execute(String[] tokenizedMessage, MessageReceivedEvent event) {
 		String mention = event.getAuthor().mention() + " ";
 		Long discordId = event.getAuthor().getLongID();
 		
@@ -30,22 +47,100 @@ public class StatsBotCommand implements IBotCommand {
 			
 			DiscordResources resources = user.getDiscordResources();
 
-			StringBuilder sb = new StringBuilder();
-			sb.append(mention);
-			sb.append("\n\n");
-			sb.append(user.getDiscordUsername());
-			sb.append("'s statistics:\n\n");
-			sb.append(":gem: Gems: ").append(resources.getGems()).append("/1000 | ");
-			sb.append("Gems spent: ").append(resources.getSpentGems()).append("\n");
-			sb.append(":moneybag: Gold: ").append(resources.getGold()).append("/10000 | ");
-			sb.append("Gold  spent: ").append(resources.getSpentGold()).append("\n\n");
-			sb.append("V2 rockets launched: ").append(resources.getV2Launched());
+            IUser author = event.getAuthor();
+            IGuild guild = event.getGuild();
 
-			return sb.toString();
-		} catch (Exception e) {
-			// return error message if user has no registered characters.
-			return mention + e.getMessage();
-		}
+            List<IRole> roles = author.getRolesForGuild(guild);
+
+            String emoteAndFactionName = "factionless";
+            String factionFlag = "";
+            String characterRank = Ranks.LEVEL_1;
+            Color factionColor = Color.BLACK;
+            for (IRole role : roles) {
+                switch (role.getName()) {
+                    case "Shogun Empire":
+                        emoteAndFactionName = Emotes.SE + " " + role.getName();
+                        factionFlag = Flags.SE;
+                        factionColor = Colors.SE;
+                        break;
+                    case "African Warlords":
+                        emoteAndFactionName = Emotes.AW + " " + role.getName();
+                        factionFlag = Flags.AW;
+                        factionColor = Colors.AW;
+                        break;
+                    case "European Alliance":
+                        emoteAndFactionName = Emotes.EA + " " + role.getName();
+                        factionFlag = Flags.EA;
+                        factionColor = Colors.EA;
+                        break;
+                    case "Soviet Union":
+                        emoteAndFactionName = Emotes.SU + " " + role.getName();
+                        factionFlag = Flags.SU;
+                        factionColor = Colors.SU;
+                        break;
+                    case "Latin Junta":
+                        emoteAndFactionName = Emotes.LJ + " " + role.getName();
+                        factionFlag = Flags.LJ;
+                        factionColor = Colors.LJ;
+                        break;
+                    case "United Republic":
+                        emoteAndFactionName = Emotes.UR + " " + role.getName();
+                        factionFlag = Flags.UR;
+                        factionColor = Colors.UR;
+                        break;
+                    case "Adjutant":
+                        characterRank = Ranks.LEVEL_2;
+                        break;
+                    case "Merc":
+                        characterRank = Ranks.LEVEL_3;
+                        break;
+
+                    default:
+                        // do nothing.
+                }
+            }
+
+            String rolesField = String.join(
+                    ", ",
+                    roles.stream().filter(iRole -> !iRole.isEveryoneRole()).map(IRole::getName).collect(Collectors.toList()));
+
+            EmbedBuilder builder = new EmbedBuilder();
+
+            builder.withColor(factionColor);
+
+            builder.withAuthorIcon(characterRank);
+            builder.withAuthorName(user.getDiscordUsername());
+            builder.withAuthorUrl(event.getAuthor().getAvatarURL());
+
+            builder.withThumbnail(event.getAuthor().getAvatarURL());
+
+            builder.withTitle("Profile");
+            builder.withDescription(
+                    "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.");
+
+            builder.appendField("Allegiance", emoteAndFactionName, false);
+
+            builder.appendField("Discord roles", rolesField, false);
+
+            builder.appendField("Gems", ":gem: " + resources.getGems() + "/1000", true);
+            builder.appendField("Wealth", ":moneybag: " + resources.getGold() + "/10000", true);
+
+            builder.appendField("Gems spent", ":gem: " + resources.getSpentGems(), true);
+            builder.appendField("Wealth spent", ":moneybag: " + resources.getSpentGold(), true);
+
+            builder.appendField("V2 Rockets launched", ":rocket: " + resources.getV2Launched().toString(), false);
+
+            event.getChannel().sendMessage(builder.build());
+
+        } catch (VVBotException e) {
+            event.getChannel().sendMessage(mention + e.getMessage());
+
+        } catch (Exception e) {
+            event.getChannel().sendMessage(mention + " !stats command failed. Please inform the moderators.");
+
+            String errorMessage = String.format("User %s in channel %s:", event.getAuthor().getName(), event.getChannel().getName());
+            log.error(errorMessage, e);
+        }
 	}
 
 	@Override

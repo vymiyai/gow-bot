@@ -1,61 +1,68 @@
 package com.memories_of_war.bot.commands;
 
+import com.memories_of_war.bot.database.DiscordUser;
+import com.memories_of_war.bot.exceptions.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.interceptor.TransactionAspectSupport;
-
-import com.memories_of_war.bot.database.DiscordUser;
-import com.memories_of_war.bot.exceptions.UserDoesNotExistException;
-
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 
 @Component
 public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
 
-	@Override
-	@Transactional
-	public String execute(String[] tokenizedMessage, MessageReceivedEvent event) {
-		String mention = event.getAuthor().mention() + " ";
-		Long discordId = event.getAuthor().getLongID();
+    private static final Logger log = LoggerFactory.getLogger(RenameBotCommand.class);
 
-		try {
-			// check for exactly one argument.
-			if (tokenizedMessage.length != 2)
-				throw new Exception("The !rename command takes exactly one parameter (e.g. !rename character_name).");
+    @Override
+    @Transactional
+    public void execute(String[] tokenizedMessage, MessageReceivedEvent event) {
+        String mention = event.getAuthor().mention() + " ";
+        Long discordId = event.getAuthor().getLongID();
 
-			String username = tokenizedMessage[1];
+        try {
+            // check for exactly one argument.
+            if (tokenizedMessage.length != 2)
+                throw new WrongNumberOfArgumentsException("The !rename command takes exactly one parameter (e.g. !rename character_name).");
 
-			this.isValidUsername(username);
-			this.isUsernameAvailable(username);
+            String username = tokenizedMessage[1];
 
-			// retrieve DiscordUser.
-			DiscordUser user = this.discordUserRepository.findByDiscordId(discordId);
+            this.isValidUsername(username);
+            this.isUsernameAvailable(username);
 
-			// throw error if the user was not found.
-			if (user == null)
-				throw new UserDoesNotExistException();
-			
-			// get old username.
-			String oldUsername = user.getDiscordUsername();
+            // retrieve DiscordUser.
+            DiscordUser user = this.discordUserRepository.findByDiscordId(discordId);
 
-			// rename character.
-			user.setDiscordUsername(username);
+            // throw error if the user was not found.
+            if (user == null)
+                throw new UserDoesNotExistException();
 
-			return mention + "Character " + oldUsername + " successfully renamed to " + username + ".";
-		} catch (Exception e) {
-			TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
-			return mention + e.getMessage();
-		}
-	}
+            // get old username.
+            String oldUsername = user.getDiscordUsername();
 
-	@Override
-	public String getCommandName() {
-		return "!rename";
-	}
+            // rename character.
+            user.setDiscordUsername(username);
 
-	@Override
-	public String getCommandDescription() {
-		return "Type !rename character_name to change your character name.";
-	}
+            event.getChannel().sendMessage(mention + "Character " + oldUsername + " successfully renamed to " + username + ".");
+
+        } catch (VVBotException e) {
+            event.getChannel().sendMessage(mention + e.getMessage());
+
+        } catch (Exception e) {
+            event.getChannel().sendMessage(mention + " !rename command failed. Please inform the moderators.");
+
+            String errorMessage = String.format("User %s in channel %s:", event.getAuthor().getName(), event.getChannel().getName());
+            log.error(errorMessage, e);
+        }
+    }
+
+    @Override
+    public String getCommandName() {
+        return "!rename";
+    }
+
+    @Override
+    public String getCommandDescription() {
+        return "Type !rename character_name to change your character name.";
+    }
 
 }

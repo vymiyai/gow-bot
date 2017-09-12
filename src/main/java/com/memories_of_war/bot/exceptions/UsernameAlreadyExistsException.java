@@ -1,6 +1,6 @@
 package com.memories_of_war.bot.exceptions;
 
-public class UsernameAlreadyExistsException extends Exception {
+public class UsernameAlreadyExistsException extends VVBotException {
 
 	private static final long serialVersionUID = -7690295191279810274L;
 
