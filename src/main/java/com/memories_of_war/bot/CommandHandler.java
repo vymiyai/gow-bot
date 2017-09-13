@@ -8,6 +8,8 @@ import sx.blah.discord.api.events.EventSubscriber;
 import sx.blah.discord.handle.impl.events.ReadyEvent;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
 import sx.blah.discord.handle.impl.events.guild.member.UserJoinEvent;
+import sx.blah.discord.handle.obj.IRole;
+import sx.blah.discord.handle.obj.IUser;
 import sx.blah.discord.util.DiscordException;
 
 import java.util.HashMap;
@@ -58,7 +60,11 @@ public class CommandHandler {
 
     @EventSubscriber
     public void onUserJoined(UserJoinEvent event) {
-        String response = String.format(this.getWelcomeMessage(), event.getUser().mention());
+        IUser user = event.getUser();
+        IRole selectFaction = event.getGuild().getRolesByName("Select Faction").get(0);
+        user.addRole(selectFaction);
+
+        String response = String.format(this.getWelcomeMessage(), user.mention());
 
         try {
             event.getGuild().getGeneralChannel().sendMessage(response);
@@ -89,7 +95,7 @@ public class CommandHandler {
 
     private String getWelcomeMessage() {
         StringBuilder response = new StringBuilder();
-        response.append(" *and ofc they cater to the non existant newbies than the vets still playing everyday. sigh*\n\n");
+        response.append("%s *and ofc they cater to the non existant newbies than the vets still playing everyday. sigh*\n\n");
         response.append("**Welcome to the community-managed March of War Discord server. I am VietnamVet-bot, in short, VV-bot.**\n\n");
 
         response.append("**Please state if you have played the game before, your main faction and how found this Discord server.**\n\n");

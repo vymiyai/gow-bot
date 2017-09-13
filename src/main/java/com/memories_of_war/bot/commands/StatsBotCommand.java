@@ -110,13 +110,12 @@ public class StatsBotCommand implements IBotCommand {
 
             builder.withAuthorIcon(characterRank);
             builder.withAuthorName(user.getDiscordUsername());
-            builder.withAuthorUrl(event.getAuthor().getAvatarURL());
+            builder.withAuthorUrl(characterRank);
 
             builder.withThumbnail(event.getAuthor().getAvatarURL());
 
             builder.withTitle("Profile");
-            builder.withDescription(
-                    "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo.");
+            builder.withDescription("Add description here.");
 
             builder.appendField("Allegiance", emoteAndFactionName, false);
 
