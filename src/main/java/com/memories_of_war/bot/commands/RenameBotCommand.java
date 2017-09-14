@@ -1,9 +1,15 @@
 package com.memories_of_war.bot.commands;
 
+import com.memories_of_war.bot.database.DiscordResources;
+import com.memories_of_war.bot.database.DiscordResourcesRepository;
 import com.memories_of_war.bot.database.DiscordUser;
-import com.memories_of_war.bot.exceptions.*;
+import com.memories_of_war.bot.exceptions.NotEnoughGemsException;
+import com.memories_of_war.bot.exceptions.UserDoesNotExistException;
+import com.memories_of_war.bot.exceptions.VVBotException;
+import com.memories_of_war.bot.exceptions.WrongNumberOfArgumentsException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedEvent;
@@ -11,7 +17,10 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 @Component
 public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
 
+    public static final Integer RENAME_GEM_COST = 100;
     private static final Logger log = LoggerFactory.getLogger(RenameBotCommand.class);
+    @Autowired
+    private DiscordResourcesRepository drr;
 
     @Override
     @Transactional
@@ -24,6 +33,7 @@ public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
             if (tokenizedMessage.length != 2)
                 throw new WrongNumberOfArgumentsException("The !rename command takes exactly one parameter (e.g. !rename character_name).");
 
+
             String username = tokenizedMessage[1];
 
             this.isValidUsername(username);
@@ -32,9 +42,18 @@ public class RenameBotCommand extends JoinBotCommand implements IBotCommand {
             // retrieve DiscordUser.
             DiscordUser user = this.discordUserRepository.findByDiscordId(discordId);
 
-            // throw error if the user was not found.
             if (user == null)
                 throw new UserDoesNotExistException();
+
+            DiscordResources discordResources = user.getDiscordResources();
+            Integer userGems = discordResources.getGems();
+            Integer userSpentGems = discordResources.getSpentGems();
+            if (userGems >= RENAME_GEM_COST) {
+                discordResources.setGems(userGems - RENAME_GEM_COST);
+                discordResources.setSpentGems(userSpentGems + RENAME_GEM_COST);
+            } else {
+                throw new NotEnoughGemsException(RENAME_GEM_COST);
+            }
 
             // get old username.
             String oldUsername = user.getDiscordUsername();

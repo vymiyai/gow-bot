@@ -1,6 +1,9 @@
 package com.memories_of_war.bot;
 
 import com.memories_of_war.bot.commands.IBotCommand;
+import com.memories_of_war.bot.commands.StatsBotCommand;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import sx.blah.discord.api.IDiscordClient;
@@ -18,9 +21,11 @@ import java.util.List;
 @Component
 public class CommandHandler {
 
+    private static final Logger log = LoggerFactory.getLogger(CommandHandler.class);
+
     private String welcomeMessage = "NOT USED";
-    private String readyMesssage = "*You want the best? Here I am.*";
-    private String playingText = "March of War";
+    private String readyMesssage = "*VV-bot mark II is now online.*";
+    private String playingText = "!help";
     private String botUserName = "VietnamVet";
     private String errorMessage = "Message could not be sent with error: \n";
 
@@ -69,8 +74,7 @@ public class CommandHandler {
         try {
             event.getGuild().getGeneralChannel().sendMessage(response);
         } catch (DiscordException e) {
-            System.err.println(this.errorMessage);
-            e.printStackTrace();
+            log.error(this.errorMessage, e);
         }
     }
 
@@ -87,8 +91,7 @@ public class CommandHandler {
                 guild.getGeneralChannel().sendMessage(response);
 
             } catch (DiscordException e) {
-                System.err.println(this.errorMessage);
-                e.printStackTrace();
+                log.error(this.errorMessage, e);
             }
         });
     }
@@ -96,9 +99,9 @@ public class CommandHandler {
     private String getWelcomeMessage() {
         StringBuilder response = new StringBuilder();
         response.append("%s *and ofc they cater to the non existant newbies than the vets still playing everyday. sigh*\n\n");
-        response.append("**Welcome to the community-managed March of War Discord server. I am VietnamVet-bot, in short, VV-bot.**\n\n");
+        response.append("Welcome to the community-managed March of War Discord server. I am VietnamVet-bot, in short, VV-bot.\n\n");
 
-        response.append("**Please state if you have played the game before, your main faction and how found this Discord server.**\n\n");
+        response.append("**Please state if you have played the game before, your main faction and how found this Discord server. Failure to comply with this instruction will get you kicked from the server.**\n\n");
 
         response.append("```- Feel free to ask around for information about the original game's outcome, complain about the EA Spy or to get to know what the community has been doing to try to revive the game.\n\n");
         response.append("- Remember to mention to one of the moderators your main faction, so that you can gain access to the faction-specific chats. Users without a faction are regularly kicked from the server.\n\n");

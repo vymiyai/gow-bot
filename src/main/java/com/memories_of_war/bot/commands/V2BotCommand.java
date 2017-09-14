@@ -79,7 +79,7 @@ public class V2BotCommand implements IBotCommand {
 
             // throw error if not enough gems for V2.
             if (userResources.getGems() < V2_ROCKET_GEM_COST)
-                throw new NotEnoughGemsException();
+                throw new NotEnoughGemsException(V2_ROCKET_GEM_COST);
 
             // get mentions in message. Throw error if none or more than one.
             List<IUser> mentions = event.getMessage().getMentions();
@@ -95,11 +95,13 @@ public class V2BotCommand implements IBotCommand {
             // return early if the target is the bot itself.
             if (this.GOW_BOT_ID.equals(target.getLongID())) {
                 event.getChannel().sendMessage(mention + " nice try scrub.");
+                return;
             }
 
             // throw error if user doesn't exist in the database.
             if (targetUser == null) {
                 event.getChannel().sendMessage(mention + " Error: Target user " + target.getName() + " is not registered.");
+                return;
             }
 
             // update user's resources.
