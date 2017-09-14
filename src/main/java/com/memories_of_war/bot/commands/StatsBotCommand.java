@@ -115,16 +115,16 @@ public class StatsBotCommand implements IBotCommand {
             builder.withThumbnail(event.getAuthor().getAvatarURL());
 
             builder.withTitle("Profile");
-            builder.withDescription("Add description here.");
+            builder.withDescription(user.getDescription());
 
             builder.appendField("Allegiance", emoteAndFactionName, false);
 
             builder.appendField("Discord roles", rolesField, false);
 
             builder.appendField("Gems", ":gem: " + resources.getGems() + "/1000", true);
-            builder.appendField("Wealth", ":moneybag: " + resources.getGold() + "/10000", true);
-
             builder.appendField("Gems spent", ":gem: " + resources.getSpentGems(), true);
+
+            builder.appendField("Wealth", ":moneybag: " + resources.getGold() + "/10000", true);
             builder.appendField("Wealth spent", ":moneybag: " + resources.getSpentGold(), true);
 
             builder.appendField("V2 Rockets launched", ":rocket: " + resources.getV2Launched().toString(), false);

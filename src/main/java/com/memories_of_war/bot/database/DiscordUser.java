@@ -1,110 +1,106 @@
 package com.memories_of_war.bot.database;
 
-import java.sql.Timestamp;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Index;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import javax.persistence.*;
+import java.sql.Timestamp;
+
 @Entity
-@Table(indexes = { @Index(name = "UK_discord_user_discord_id", columnList = "discordId"),
-		@Index(name = "UK_discord_user_discord_username", columnList = "discordUsername") })
+@Table(indexes = {@Index(name = "UK_discord_user_discord_id", columnList = "discordId"),
+        @Index(name = "UK_discord_user_discord_username", columnList = "discordUsername")})
 public class DiscordUser {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(unique = true)
-	private Long discordId;
+    @Column(unique = true)
+    private Long discordId;
 
-	@Column(unique = true)
-	private String discordUsername;
+    @Column(unique = true)
+    private String discordUsername;
 
-	private String accessToken;
+    private String accessToken;
 
-	@CreationTimestamp
-	private Timestamp creationDate;
+    private String description;
 
-	@UpdateTimestamp
-	private Timestamp lastChange;
+    @CreationTimestamp
+    private Timestamp creationDate;
 
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "discord_resources_fk")
-	private DiscordResources discordResources;
+    @UpdateTimestamp
+    private Timestamp lastChange;
 
-	protected DiscordUser() {
-	}
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "discord_resources_fk")
+    private DiscordResources discordResources;
 
-	public DiscordUser(Long discordId, String discordUsername) {
-		this.discordId = discordId;
-		this.discordUsername = discordUsername;
-	}
+    protected DiscordUser() {
+    }
 
-	@Override
-	public String toString() {
-		return String.format(
-				"Discord user [id='%d', discordId='%d', discordUsername='%s', creationDate='%s', lastChange='%s', accessToken='%s', resources='%s']",
-				this.id, this.discordId, this.discordUsername, this.creationDate, this.lastChange, this.accessToken, discordResources);
-	}
+    public DiscordUser(Long discordId, String discordUsername) {
+        this.discordId = discordId;
+        this.discordUsername = discordUsername;
+    }
 
-	public Long getDiscordId() {
-		return discordId;
-	}
+    @Override
+    public String toString() {
+        return String.format(
+                "Discord user [id='%d', discordId='%d', discordUsername='%s', description='%s' creationDate='%s', lastChange='%s', accessToken='%s', resources='%s']",
+                this.id, this.discordId, this.discordUsername, this.description, this.creationDate, this.lastChange, this.accessToken, discordResources);
+    }
 
-	public void setDiscordId(Long discordId) {
-		this.discordId = discordId;
-	}
+    public Long getDiscordId() {
+        return discordId;
+    }
 
-	public String getDiscordUsername() {
-		return discordUsername;
-	}
+    public void setDiscordId(Long discordId) {
+        this.discordId = discordId;
+    }
 
-	public void setDiscordUsername(String discordUsername) {
-		this.discordUsername = discordUsername;
-	}
+    public String getDiscordUsername() {
+        return discordUsername;
+    }
 
-	public String getAccessToken() {
-		return accessToken;
-	}
+    public void setDiscordUsername(String discordUsername) {
+        this.discordUsername = discordUsername;
+    }
 
-	public void setAccessToken(String accessToken) {
-		this.accessToken = accessToken;
-	}
+    public String getAccessToken() {
+        return accessToken;
+    }
 
-	public Timestamp getCreationDate() {
-		return creationDate;
-	}
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
+    }
 
-	public void setCreationDate(Timestamp creationDate) {
-		this.creationDate = creationDate;
-	}
+    public Timestamp getCreationDate() {
+        return creationDate;
+    }
 
-	public Timestamp getLastChange() {
-		return lastChange;
-	}
+    public void setCreationDate(Timestamp creationDate) {
+        this.creationDate = creationDate;
+    }
 
-	public DiscordResources getDiscordResources() {
-		return discordResources;
-	}
+    public Timestamp getLastChange() {
+        return lastChange;
+    }
 
-	public void setDiscordResources(DiscordResources discordResources) {
-		this.discordResources = discordResources;
-	}
+    public DiscordResources getDiscordResources() {
+        return discordResources;
+    }
 
-	public Long getId() {
-		return id;
-	}
+    public void setDiscordResources(DiscordResources discordResources) {
+        this.discordResources = discordResources;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getDescription() { return (this.description == null) ? "Type !desc to update your description." : description; }
+
+    public void setDescription(String description) { this.description = description; }
+
 
 }
