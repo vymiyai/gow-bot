@@ -63,7 +63,7 @@ public class DescBotCommand implements IBotCommand {
             }
 
             // set character description.
-            user.setDescription(description);
+            //user.setDescription(description);
 
             event.getChannel().sendMessage(mention + "Character description updated.");
 
