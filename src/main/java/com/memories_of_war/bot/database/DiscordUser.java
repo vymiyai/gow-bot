@@ -23,7 +23,7 @@ public class DiscordUser {
 
     private String accessToken;
 
-    private String description;
+//    private String description;
 
     @CreationTimestamp
     private Timestamp creationDate;
@@ -46,8 +46,8 @@ public class DiscordUser {
     @Override
     public String toString() {
         return String.format(
-                "Discord user [id='%d', discordId='%d', discordUsername='%s', description='%s' creationDate='%s', lastChange='%s', accessToken='%s', resources='%s']",
-                this.id, this.discordId, this.discordUsername, this.description, this.creationDate, this.lastChange, this.accessToken, discordResources);
+                "Discord user [id='%d', discordId='%d', discordUsername='%s', creationDate='%s', lastChange='%s', accessToken='%s', resources='%s']",
+                this.id, this.discordId, this.discordUsername, this.creationDate, this.lastChange, this.accessToken, discordResources);
     }
 
     public Long getDiscordId() {
@@ -98,9 +98,9 @@ public class DiscordUser {
         return id;
     }
 
-    public String getDescription() { return (this.description == null) ? "Type !desc to update your description." : description; }
+//    public String getDescription() { return (this.description == null) ? "Type !desc to update your description." : description; }
 
-    public void setDescription(String description) { this.description = description; }
+//    public void setDescription(String description) { this.description = description; }
 
 
 }
