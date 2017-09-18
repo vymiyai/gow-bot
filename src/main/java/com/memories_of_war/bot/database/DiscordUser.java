@@ -23,7 +23,7 @@ public class DiscordUser {
 
     private String accessToken;
 
-//    private String description;
+    private String description;
 
     @CreationTimestamp
     private Timestamp creationDate;
@@ -98,9 +98,9 @@ public class DiscordUser {
         return id;
     }
 
-//    public String getDescription() { return (this.description == null) ? "Type !desc to update your description." : description; }
+    public String getDescription() { return (this.description == null) ? "Type !desc to update your description." : description; }
 
-//    public void setDescription(String description) { this.description = description; }
+    public void setDescription(String description) { this.description = description; }
 
 
 }

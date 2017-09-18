@@ -16,7 +16,7 @@ import sx.blah.discord.handle.impl.events.guild.channel.message.MessageReceivedE
 
 import java.util.Arrays;
 
-//@Component
+@Component
 public class DescBotCommand implements IBotCommand {
 
     public static final int DESC_GEM_COST = 20;
@@ -63,7 +63,7 @@ public class DescBotCommand implements IBotCommand {
             }
 
             // set character description.
-            //user.setDescription(description);
+            user.setDescription(description);
 
             event.getChannel().sendMessage(mention + "Character description updated.");
 
