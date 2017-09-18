@@ -116,7 +116,7 @@ public class StatsBotCommand implements IBotCommand {
 
             builder.withTitle("Profile");
 
-            //builder.withDescription(user.getDescription());
+            builder.withDescription(user.getDescription());
             builder.withDescription(" ");
 
             builder.appendField("Allegiance", emoteAndFactionName, false);
