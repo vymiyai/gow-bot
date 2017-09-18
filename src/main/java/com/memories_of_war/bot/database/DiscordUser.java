@@ -98,7 +98,7 @@ public class DiscordUser {
         return id;
     }
 
-    public String getDescription() { return (this.description == null) ? "Type !desc to update your description." : description; }
+    public String getDescription() { return (this.description == null) ? "Type !desc your_description to update your profile description (maximum 500 characters). Requires 20 gems to deploy." : description; }
 
     public void setDescription(String description) { this.description = description; }
 
