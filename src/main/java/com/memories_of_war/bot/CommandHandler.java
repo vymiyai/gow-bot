@@ -78,6 +78,7 @@ public class CommandHandler {
         }
     }
 
+    /*
     @EventSubscriber
     public void onSelfJoined(ReadyEvent event) {
         String response = this.readyMesssage;
@@ -95,6 +96,7 @@ public class CommandHandler {
             }
         });
     }
+    */
 
     private String getWelcomeMessage() {
         StringBuilder response = new StringBuilder();
