@@ -15,6 +15,7 @@ public class ReadyState implements BotState {
             bot.setOwnId(bot.getJda().getSelfUser().getIdLong());
             bot.setServer(bot.getJda().getGuildById(SERVER_ID));
             bot.setBotRoom(bot.getServer().getTextChannelById(BOT_ROOM));
+            bot.setWorldChat(bot.getServer().getTextChannelById(WORLD_CHAT));
             bot.setVvRole(bot.getServer().getRoleById(VV_ROLE_ID));
 
             // rename bot according to provided bot name.

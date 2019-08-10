@@ -22,6 +22,7 @@ public class BotListener implements EventListener {
     private Guild server;
     private Role vvRole;
     private TextChannel botRoom;
+    private TextChannel worldChat;
     private long leaderId;
     private long ownId;
 
@@ -91,5 +92,13 @@ public class BotListener implements EventListener {
 
     public void setOwnId(long ownId) {
         this.ownId = ownId;
+    }
+
+    public TextChannel getWorldChat() {
+        return worldChat;
+    }
+
+    public void setWorldChat(TextChannel worldChat) {
+        this.worldChat = worldChat;
     }
 }

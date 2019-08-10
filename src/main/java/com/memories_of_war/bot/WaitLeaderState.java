@@ -14,7 +14,7 @@ public class WaitLeaderState implements BotState {
 
     public WaitLeaderState(BotListener bot) {
         creationTimestamp = LocalDateTime.now();
-        bot.getJda().getPresence().setPresence(Game.listening("for Leader reply"), false);
+        bot.getJda().getPresence().setPresence(Game.listening("Leader reply"), false);
         System.out.println("Awaiting Leader reply.");
     }
 

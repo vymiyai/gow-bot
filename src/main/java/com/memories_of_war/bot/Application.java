@@ -22,6 +22,9 @@ public class Application {
     public static final long SERVER_ID = 232501335147151360L;
     public static final long VV_ROLE_ID = 243403456692486154L;
     public static final long BOT_ROOM = 609484527919955981L;
+    public static final long WORLD_CHAT = 232501335147151360L;
+    public static final long ASK_SOLACE_WORKSHOP = 314214749510434816L;
+    public static final long RULES = 334424603386576896L;
 
     // Logger.
     private static final Logger log = LoggerFactory.getLogger(Application.class);

@@ -7,6 +7,8 @@ import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 import java.time.LocalDateTime;
 
+import static com.memories_of_war.bot.Application.ASK_SOLACE_WORKSHOP;
+import static com.memories_of_war.bot.Application.RULES;
 import static com.memories_of_war.bot.BotListener.FOLLOW_ME;
 
 public class ListeningState implements BotState {
@@ -46,17 +48,19 @@ public class ListeningState implements BotState {
 
         if (event instanceof GuildMemberJoinEvent) {
             GuildMemberJoinEvent gmje = (GuildMemberJoinEvent) event;
+            String rules = bot.getServer().getTextChannelById(RULES).getAsMention();
+            String askSolaceWorkshop = bot.getServer().getTextChannelById(ASK_SOLACE_WORKSHOP).getAsMention();
             String greeting = gmje.getMember().getAsMention()
                     + " *and ofc they cater to the non existant newbies than the vets still playing everyday. sigh*\n\n"
                     + "Welcome to the community-managed March of War Discord server.\n\n"
                     + "**Please state your main faction and how found this Discord server. Failure to comply with this instruction will get you kicked from the server.**\n\n"
-                    + "- Read the #rules. Stating ignorance of the rules as an excuse to justify non-compliant actions will not be tolerated.\n\n"
-                    + "- Feel free to ask around for information about the original game's outcome, complain about the EA Spy or to get to know what the community has been doing to try to revive the game.\n\n"
-                    + "- Remember to mention to one of the moderators your main faction, so that you can gain access to the faction-specific chats. Users without a faction are regularly kicked from the server.\n\n"
-                    + "- For questions regarding the project Avant Guard or the organization Solace Workshop, please refer to #ask_solace_workshop. This server is not officially associated with the Avant Guard project nor with the entity Solace Workshop.\n\n"
+                    + "- Read the " + rules + ". Stating ignorance of the rules as an excuse to justify non-compliant actions will not be tolerated.\n"
+                    + "- Feel free to ask around for information about the original game's outcome, complain about the EA Spy or to get to know what the community has been doing to try to revive the game.\n"
+                    + "- Remember to mention to one of the moderators your main faction, so that you can gain access to the faction-specific chats. Users without a faction are regularly kicked from the server.\n"
+                    + "- For questions regarding the project Avant Guard or the organization Solace Workshop, please refer to " + askSolaceWorkshop + ". This server is not officially associated with the Avant Guard project nor with the entity Solace Workshop.\n"
                     + "- If you know other players, be sure to tell them about us!";
 
-            bot.getServer().getDefaultChannel().sendMessage(greeting).queue();
+            bot.getWorldChat().sendMessage(greeting).queue();
         }
 
     }
