@@ -17,6 +17,9 @@ public class ReadyState implements BotState {
             bot.setBotRoom(bot.getServer().getTextChannelById(BOT_ROOM));
             bot.setVvRole(bot.getServer().getRoleById(VV_ROLE_ID));
 
+            // rename bot according to provided bot name.
+            bot.getServer().getController().setNickname(bot.getServer().getSelfMember(), bot.getBotName()).queue();
+
             bot.getBotRoom().sendMessage("Requesting leader.").queue();
             System.out.println(bot.getBotName() + " is online.");
 
