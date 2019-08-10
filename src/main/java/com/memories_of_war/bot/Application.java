@@ -1,7 +1,7 @@
 package com.memories_of_war.bot;
 
-import com.memories_of_war.bot.database.DiscordResourcesRepository;
-import com.memories_of_war.bot.database.DiscordUserRepository;
+import net.dv8tion.jda.core.JDA;
+import net.dv8tion.jda.core.JDABuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,78 +9,44 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import sx.blah.discord.api.ClientBuilder;
-import sx.blah.discord.api.IDiscordClient;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 
+import javax.security.auth.login.LoginException;
+
+@EnableScheduling
 @SpringBootApplication
 public class Application {
+
+    public static final long SERVER_ID = 232501335147151360L;
+    public static final long VV_ROLE_ID = 243403456692486154L;
+    public static final long BOT_ROOM = 609484527919955981L;
 
     // Logger.
     private static final Logger log = LoggerFactory.getLogger(Application.class);
 
-    // as of 23.06.2017, moving the autowired annotation from the setter to this
-    // property fucks up everything.
-    private static CommandHandler basicCommandHandler;
     // Discord token for GoW-bot. Same case as the CommandHandler.
-    private static String GOW_TOKEN;
+    private static String BOT_TOKEN;
 
-    /**
-     * Main method run statically.
-     *
-     * @param args
-     */
     public static void main(String[] args) {
-
         SpringApplication.run(Application.class, args);
-
-        // get token as environment variable.
-        final String token = GOW_TOKEN;
-
-        try {
-            IDiscordClient cli = new ClientBuilder().withToken(token).withRecommendedShardCount().build();
-
-            // Register a listener via the EventSubscriber annotation which
-            // allows for organization and delegation of events
-            cli.getDispatcher().registerListener(basicCommandHandler);
-
-            // Only login after all events are registered otherwise some may be
-            // missed.
-            cli.login();
-        } catch (Exception e) {
-            // do nothing.
-            log.warn("WARNING - Discord4J :" + e.getMessage());
-        }
     }
 
-    @Autowired
-    private void setBasicCommandHandler(CommandHandler bch) {
-        basicCommandHandler = bch;
+    @Value("${discord.botToken}")
+    private void setGowToken(String botToken) {
+        BOT_TOKEN = botToken;
     }
 
-    @Value("${discord.gow_token}")
-    private void setGowToken(String gowToken) {
-        GOW_TOKEN = gowToken;
-    }
-
-    /**
-     * Bean that lists java Beans registered by Spring.
-     *
-     * @param ctx
-     * @return
-     */
     @Bean
-    public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
+    public CommandLineRunner run(BotListener botListener) {
         return args -> {
-            System.out.println();
-        };
-    }
+            JDA jda = new JDABuilder(BOT_TOKEN)
+                    .addEventListener(botListener)
+                    .build();
 
-    @Bean
-    public CommandLineRunner demo(DiscordUserRepository dur, DiscordResourcesRepository drr) {
-        return (args) -> {
-            log.info("Command Line Runner is running.");
+            // optionally block until JDA is ready
+            jda.awaitReady();
         };
     }
 
